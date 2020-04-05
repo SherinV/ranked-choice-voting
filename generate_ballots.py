@@ -1,7 +1,7 @@
 from itertools import permutations
 import pandas as pd
 import numpy as np
-import math
+
 
 # unit test for this would just be len(returned_list) = permutations of num_cands:
 def generate_all_possible_rank_combos(num_cands):
@@ -37,16 +37,15 @@ def generate_weights_to_apply_to_each_unique_set_of_ranks(cand_ranks):
         in an election that look like one of the unique rank combinations
     """
     num_unique_rank_combos = len(cand_ranks)
-
     weights = np.random.randint(1, 101, num_unique_rank_combos)
     weights = [weight/sum(weights) for weight in weights]
-
     return weights
+
 
 def generate_distribution_of_ballots(num_ballots_in_election, weights):
     """
     :param num_ballots_in_election: total rows (i.e. ballots) to be generated for an election
-    :param weights: weights per unique combo of ranks (i.e. unique ballots) generated for an election
+    :param weights: weights to apply to unique combo of ranks (i.e. unique ballots) generated for an election
     :return: list of ints, where each int == num rows (i.e. ballots) to be generated per unique rank combo
         for an election
     """
@@ -57,8 +56,34 @@ def generate_distribution_of_ballots(num_ballots_in_election, weights):
     return distribution_of_ballots
 
 
+def generate_ballots(distribution_of_ballots, cand_ranks):
+    ballots = []
+    for unique_rank_combo in range(len(cand_ranks)):
+        ballots.append([candidate_ranks[unique_rank_combo]]*distribution_of_ballots[unique_rank_combo])
+    return ballots
 
 
+def turn_ballots_into_dfs(list_of_ballots, cand_names):
+    return [pd.DataFrame(ballot_combo, columns=cand_names) for ballot_combo in list_of_ballots]
+
+
+def reconcile_num_ballots_with_len_df(num_total_ballots, df):
+    if len(df) == num_total_ballots:
+        print(f'length of df ({len(df)}) matches total num of ballots ({num_total_ballots})')
+        return df
+
+    if len(df) < num_total_ballots:
+        print(f'length of df ({len(df)}) is less than total num of ballots ({num_total_ballots})')
+        diff = num_total_ballots - len(df)
+        df = pd.concat([df, df[-1:]*diff])
+        df.reset_index(inplace=True)
+        return df
+
+    if len(df) > num_total_ballots:
+        print(f'length of df ({len(df)}) is longer than total num of ballots ({num_total_ballots})')
+        diff = len(df) - num_total_ballots
+        df = df[:-diff]
+        return df
 
 
 if __name__ == "__main__":
@@ -71,10 +96,7 @@ if __name__ == "__main__":
     num_ballots_in_election = pick_rand_num_of_ballots_for_an_election()
     weights = generate_weights_to_apply_to_each_unique_set_of_ranks(candidate_ranks)
     election_row_distribution = generate_distribution_of_ballots(num_ballots_in_election, weights)
-
-    df = generate_election_df(candidate_ranks, names_of_cands)
-
-
-
-
-    print(df)
+    ballots = generate_ballots(election_row_distribution, candidate_ranks)
+    dfs = turn_ballots_into_dfs(ballots, names_of_cands)
+    df = pd.concat(dfs)
+    df = reconcile_num_ballots_with_len_df(num_ballots_in_election, df)
