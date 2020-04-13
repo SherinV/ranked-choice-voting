@@ -1,6 +1,7 @@
 from itertools import permutations
 import pandas as pd
 import numpy as np
+import random
 
 
 # unit test for this would just be len(returned_list) = permutations of num_cands:
@@ -10,15 +11,6 @@ def generate_all_possible_rank_combos(num_cands):
     :return: list of tuples, each tuple contains unique combination of ranks
     """
     return list(permutations(list(range(1,num_cands+1))))
-
-
-def generate_election_df(cand_ranks, names_of_cands):
-    """
-    :param names_of_cands: list of strings; each string == candidate name
-    :return: dataframe with columns named per candidate; each row is a ranked ballot
-    """
-    df = pd.DataFrame(data=cand_ranks, columns=names_of_cands)
-    return df
 
 
 # unit test = that the number is btwn 500 and 50k:
@@ -63,6 +55,13 @@ def generate_ballots(distribution_of_ballots, cand_ranks):
     return ballots
 
 
+
+
+
+
+
+
+
 def turn_ballots_into_dfs(list_of_ballots, cand_names):
     return [pd.DataFrame(ballot_combo, columns=cand_names) for ballot_combo in list_of_ballots]
 
@@ -86,10 +85,54 @@ def reconcile_num_ballots_with_len_df(num_total_ballots, df):
         return df
 
 
+def add_noise(percent_noise, matrix_shape):
+    """
+    :param df:
+    :param noise:
+    :return:
+    """
+    # K = percent_noise*100
+    # N = matrix_shape[0]
+    #
+    # arr = np.zeros(N)
+    # arr[:K] = 1
+    # np.random.shuffle(arr)
+
+    # return arr
+
+    # pd.DataFrame(np.zeros(data=matrix_shape[0], columns=matrix_shape[1]))
+
+    sample = np.random.binomial(1, percent_noise, size=len(df.sample(frac=percent_noise)))
+
+    return sample
+
+    # {permutation: fraction_of_df,}
+
+    # 1 + unlimited # of zeroes
+    # 1 + other ranks + a zero (or zeroes) somewhere
+
+    # randomly generate an amount of zeroes & use that to replace candidates in rows from our sample
+
+    # 1) everything is 1s except x% ( = % noise), which are zeroes
+        # shape of df is randomly generated
+
+
+
+
+
+
+
+
+    # 2) WAIT UNTIL TALK TO SHERIN: first row will have to be 1s
+
+
+
+
 if __name__ == "__main__":
     # hyperparams:
     num_cands = 3
     names_of_cands = ['audrey', 'moeid', 'sherin']
+    amount_of_noise = np.random.randint(1, 20)/100
 
     # funcs:
     candidate_ranks = generate_all_possible_rank_combos(num_cands) # unit test that len(cand ranks) == len(cand names)
@@ -100,3 +143,8 @@ if __name__ == "__main__":
     dfs = turn_ballots_into_dfs(ballots, names_of_cands)
     df = pd.concat(dfs)
     df = reconcile_num_ballots_with_len_df(num_ballots_in_election, df)
+
+    matrix_shape = df.to_numpy().shape # will return (30781, 3)
+    test = add_noise(amount_of_noise, matrix_shape)
+
+    df = 'pass'
