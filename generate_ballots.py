@@ -1,7 +1,8 @@
 from itertools import permutations
 import pandas as pd
 import numpy as np
-import random
+from datetime import datetime
+
 
 
 # unit test for this would just be len(returned_list) = permutations of num_cands:
@@ -87,52 +88,33 @@ def reconcile_num_ballots_with_len_df(num_total_ballots, df):
 
 def add_noise(percent_noise, matrix_shape):
     """
-    :param df:
-    :param noise:
+    :param percent_noise:
+    :param matrix_shape:
     :return:
     """
-    # K = percent_noise*100
-    # N = matrix_shape[0]
-    #
-    # arr = np.zeros(N)
-    # arr[:K] = 1
-    # np.random.shuffle(arr)
+    p = [percent_noise/1, 1-percent_noise/1]
+    n = matrix_shape[0]
+    m = matrix_shape[1]
+    return np.random.choice([0, 1], size=(n, m), p=p)
 
-    # return arr
-
-    # pd.DataFrame(np.zeros(data=matrix_shape[0], columns=matrix_shape[1]))
-
-    sample = np.random.binomial(1, percent_noise, size=len(df.sample(frac=percent_noise)))
-
-    return sample
-
-    # {permutation: fraction_of_df,}
-
-    # 1 + unlimited # of zeroes
-    # 1 + other ranks + a zero (or zeroes) somewhere
-
-    # randomly generate an amount of zeroes & use that to replace candidates in rows from our sample
-
-    # 1) everything is 1s except x% ( = % noise), which are zeroes
-        # shape of df is randomly generated
+    # idea for unit test:
+    # unique, counts = np.unique(test, return_counts=True)
+    # dict(zip(unique, counts))
 
 
-
-
-
-
-
-
-    # 2) WAIT UNTIL TALK TO SHERIN: first row will have to be 1s
 
 
 
 
 if __name__ == "__main__":
+    #### make func where user can select x number of y candidates for preference?
+
     # hyperparams:
     num_cands = 3
     names_of_cands = ['audrey', 'moeid', 'sherin']
     amount_of_noise = np.random.randint(1, 20)/100
+    date = datetime.now()
+    file_date = date.strftime("%m-%d-%Y_%H-%M-%S")
 
     # funcs:
     candidate_ranks = generate_all_possible_rank_combos(num_cands) # unit test that len(cand ranks) == len(cand names)
@@ -144,7 +126,12 @@ if __name__ == "__main__":
     df = pd.concat(dfs)
     df = reconcile_num_ballots_with_len_df(num_ballots_in_election, df)
 
-    matrix_shape = df.to_numpy().shape # will return (30781, 3)
-    test = add_noise(amount_of_noise, matrix_shape)
+    matrix_shape = df.to_numpy().shape
+    noise_matrix = add_noise(percent_noise=amount_of_noise, matrix_shape= matrix_shape)
+    df = df * noise_matrix
 
-    df = 'pass'
+    df = df.replace({1: 'audrey', 2: 'moeid', 3: 'sherin'})
+    print(len(df))
+
+    df.to_csv(f'noisy_election_{file_date}.csv', header=False)
+
