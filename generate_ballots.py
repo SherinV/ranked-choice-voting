@@ -90,6 +90,17 @@ def add_noise(percent_noise, matrix_shape):
     m = matrix_shape[1]
     return np.random.choice([0, 1], size=(n, m), p=p)
 
+def generate_ballots_main_function(num_cands, names_of_cands):
+    candidate_ranks = generate_all_possible_rank_combos(num_cands)  # unit test that len(cand ranks) == len(cand names)
+    num_ballots_in_election = pick_rand_num_of_ballots_for_an_election()
+    weights = generate_weights_to_apply_to_each_unique_set_of_ranks(candidate_ranks)
+    election_row_distribution = generate_distribution_of_ballots(num_ballots_in_election, weights)
+    ballots = generate_ballots(election_row_distribution, candidate_ranks)
+    dfs = turn_ballots_into_dfs(ballots, names_of_cands)
+    df = pd.concat(dfs)
+    df = reconcile_num_ballots_with_len_df(num_ballots_in_election, df)
+    return df
+
 
 if __name__ == "__main__":
     #### make func where user can select x number of y candidates for preference?
@@ -102,14 +113,7 @@ if __name__ == "__main__":
     file_date = date.strftime("%m-%d-%Y_%H-%M-%S")
 
     # funcs:
-    candidate_ranks = generate_all_possible_rank_combos(num_cands) # unit test that len(cand ranks) == len(cand names)
-    num_ballots_in_election = pick_rand_num_of_ballots_for_an_election()
-    weights = generate_weights_to_apply_to_each_unique_set_of_ranks(candidate_ranks)
-    election_row_distribution = generate_distribution_of_ballots(num_ballots_in_election, weights)
-    ballots = generate_ballots(election_row_distribution, candidate_ranks)
-    dfs = turn_ballots_into_dfs(ballots, names_of_cands)
-    df = pd.concat(dfs)
-    df = reconcile_num_ballots_with_len_df(num_ballots_in_election, df)
+    df = generate_ballots_main_function(num_cands, names_of_cands)
 
     matrix_shape = df.to_numpy().shape
     noise_matrix = add_noise(percent_noise=amount_of_noise, matrix_shape= matrix_shape)
