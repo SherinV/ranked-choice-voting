@@ -52,7 +52,7 @@ def generate_distribution_of_ballots(num_ballots_in_election, weights):
 def generate_ballots(distribution_of_ballots, cand_ranks):
     ballots = []
     for unique_rank_combo in range(len(cand_ranks)):
-        ballots.append([candidate_ranks[unique_rank_combo]]*distribution_of_ballots[unique_rank_combo])
+        ballots.append([cand_ranks[unique_rank_combo]]*distribution_of_ballots[unique_rank_combo])
     return ballots
 
 
