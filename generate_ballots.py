@@ -2,6 +2,7 @@ from itertools import permutations
 import pandas as pd
 import numpy as np
 from datetime import datetime
+import sys
 
 
 
@@ -76,7 +77,7 @@ def reconcile_num_ballots_with_len_df(num_total_ballots, df):
         print(f'length of df ({len(df)}) is less than total num of ballots ({num_total_ballots})')
         diff = num_total_ballots - len(df)
         df = pd.concat([df, df[-1:]*diff])
-        df.reset_index(inplace=True)
+        df.reset_index(inplace=True, drop=True)
         return df
 
     if len(df) > num_total_ballots:
@@ -110,9 +111,9 @@ if __name__ == "__main__":
     #### make func where user can select x number of y candidates for preference?
 
     # hyperparams:
-    num_cands = 3
-    names_of_cands = ['audrey', 'moeid', 'sherin']
-    amount_of_noise = np.random.randint(1, 20)/100
+    num_cands = int(sys.argv[1])
+    names_of_cands = [f'candidate_{i}' for i in range(1, num_cands+1)]
+    amount_of_noise = np.random.randint(1, int(sys.argv[2]))/100
     date = datetime.now()
     file_date = date.strftime("%m-%d-%Y_%H-%M-%S")
 
@@ -130,8 +131,10 @@ if __name__ == "__main__":
     noise_matrix = add_noise(percent_noise=amount_of_noise, matrix_shape= matrix_shape)
     df = df * noise_matrix
 
-    df = df.replace({1: 'audrey', 2: 'moeid', 3: 'sherin'})
-    print(len(df))
+    col_replacements = list(range(1, len(df.columns) + 1))
+
+    for i in col_replacements:
+        df = df.replace({i: df.columns[i - 1]})
 
     df.to_csv(f'noisy_election_{file_date}.csv', header=False)
 
