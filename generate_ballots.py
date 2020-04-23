@@ -124,5 +124,5 @@ if __name__ == "__main__":
     for i in col_replacements:
         df = df.replace({i: df.columns[i-1]})
 
-    df.to_csv(f'noisy_election_{file_date}.csv', header=False)
+    df.to_csv(f'election_{file_date}_{sys.argv[1]}cands_{sys.argv[2]}noise.csv', header=False)
 
