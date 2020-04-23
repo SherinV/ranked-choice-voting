@@ -5,7 +5,6 @@ from datetime import datetime
 import sys
 
 
-
 # unit test for this would just be len(returned_list) = permutations of num_cands:
 def generate_all_possible_rank_combos(num_cands):
     """
@@ -57,13 +56,6 @@ def generate_ballots(distribution_of_ballots, cand_ranks):
     return ballots
 
 
-
-
-
-
-
-
-
 def turn_ballots_into_dfs(list_of_ballots, cand_names):
     return [pd.DataFrame(ballot_combo, columns=cand_names) for ballot_combo in list_of_ballots]
 
@@ -98,14 +90,6 @@ def add_noise(percent_noise, matrix_shape):
     m = matrix_shape[1]
     return np.random.choice([0, 1], size=(n, m), p=p)
 
-    # idea for unit test:
-    # unique, counts = np.unique(test, return_counts=True)
-    # dict(zip(unique, counts))
-
-
-
-
-
 
 if __name__ == "__main__":
     #### make func where user can select x number of y candidates for preference?
@@ -131,10 +115,10 @@ if __name__ == "__main__":
     noise_matrix = add_noise(percent_noise=amount_of_noise, matrix_shape= matrix_shape)
     df = df * noise_matrix
 
-    col_replacements = list(range(1, len(df.columns) + 1))
+    col_replacements = list(range(1, len(df.columns)+1))
 
     for i in col_replacements:
-        df = df.replace({i: df.columns[i - 1]})
+        df = df.replace({i: df.columns[i-1]})
 
     df.to_csv(f'noisy_election_{file_date}.csv', header=False)
 
