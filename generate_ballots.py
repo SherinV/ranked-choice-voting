@@ -109,7 +109,7 @@ if __name__ == "__main__":
     # hyperparams:
     num_cands = int(sys.argv[1])
     names_of_cands = [f'candidate_{i}' for i in range(1, num_cands+1)]
-    amount_of_noise = np.random.randint(1, int(sys.argv[2]))/100
+    amount_of_noise = int(sys.argv[2])/100
     date = datetime.now()
     file_date = date.strftime("%m-%d-%Y_%H-%M-%S")
 
