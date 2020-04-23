@@ -104,6 +104,7 @@ def generate_ballots_main_function(num_cands, names_of_cands):
 
 if __name__ == "__main__":
     #### make func where user can select x number of y candidates for preference?
+    #### make sure to put in README that noise has be to > 1
 
     # hyperparams:
     num_cands = int(sys.argv[1])
