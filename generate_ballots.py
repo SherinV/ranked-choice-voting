@@ -109,7 +109,7 @@ if __name__ == "__main__":
     # hyperparams:
     num_cands = int(sys.argv[1])
     names_of_cands = [f'candidate_{i}' for i in range(1, num_cands+1)]
-    amount_of_noise = int(sys.argv[2])/100
+    amount_of_noise = (int(sys.argv[2])/100)/num_cands
     date = datetime.now()
     file_date = date.strftime("%m-%d-%Y_%H-%M-%S")
 
@@ -125,5 +125,5 @@ if __name__ == "__main__":
     for i in col_replacements:
         df = df.replace({i: df.columns[i-1]})
 
-    df.to_csv(f'election_{file_date}_{sys.argv[1]}cands_{sys.argv[2]}noise.csv', header=False)
+    df.to_csv(f'election_{file_date}_{sys.argv[1]}cands_{sys.argv[2]}noise.csv')
 
