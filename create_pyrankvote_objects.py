@@ -5,7 +5,7 @@ from pyrankvote import Candidate, Ballot
 
 
 def rename_index_col_to_ballot_id(df):
-    df.columns.values[0] = "ballot_id"
+    df.rename(columns={'Unnamed: 0': 'ballot_id'}, inplace=True)
     return df
 
 def get_cand_list(df):
@@ -14,7 +14,10 @@ def get_cand_list(df):
     return cand_list
 
 def initialize_cand_objs(cand_list):
-    return [Candidate(c) for c in cand_list]
+    if isinstance(cand_list, str):
+        return [Candidate(c) for c in cand_list.split(', ')]
+    else:
+        return [Candidate(c) for c in cand_list]
 
 # def initialize_cand_objs_in_df_cols(df):
 #     cands_df = df.iloc[:, 1:]  # getting all columns with candidate names in them
@@ -46,6 +49,7 @@ def main():
     df = rename_index_col_to_ballot_id(df)
     df = get_cands_into_single_cell(df)
 
+    df['candidate_list'] = df['candidate_list'].apply(lambda x: x.replace('0, ', '').replace(', 0', ''))
     df['candidate_list'] = df['candidate_list'].apply(lambda x: initialize_cand_objs(x))
 
     ballots = initialize_ballot_objs(df)
