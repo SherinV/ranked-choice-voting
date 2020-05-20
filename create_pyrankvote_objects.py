@@ -23,9 +23,10 @@ def initialize_cand_objs(cand_list):
 #     return cands_df
 
 def get_cands_into_single_cell(df):
-    cands_to_put_in_single_cell = df.iloc[:, 1:].columns.to_list()
-    df['candidate_list'] = str(cands_to_put_in_single_cell)
-    df['candidate_list'] = df['candidate_list'].apply(lambda x: ast.literal_eval(x))
+    df['candidate_list'] = df.iloc[:, 1:].agg(", ".join, axis=1)
+    # cands_to_put_in_single_cell = df.iloc[:, 1:].columns.to_list()
+    # df['candidate_list'] = str(cands_to_put_in_single_cell)
+    # df['candidate_list'] = df['candidate_list'].apply(lambda x: ast.literal_eval(x))
     return df
 
 def initialize_ballot_objs(df):
