@@ -8,10 +8,10 @@ def rename_index_col_to_ballot_id(df):
     df.columns.values[0] = "ballot_id"
     return df
 
-# def get_cand_list(df):
-#     list_of_unique_vals_in_dataframe = df.iloc[:, 1].value_counts().index
-#     cand_list = list(filter(lambda x: x != '0', list_of_unique_vals_in_dataframe))
-#     return cand_list
+def get_cand_list(df):
+    list_of_unique_vals_in_dataframe = df.iloc[:, 1].value_counts().index
+    cand_list = list(filter(lambda x: x != '0', list_of_unique_vals_in_dataframe))
+    return cand_list
 
 def initialize_cand_objs(cand_list):
     return [Candidate(c) for c in cand_list]
@@ -35,6 +35,9 @@ def initialize_ballot_objs(df):
         ballot_objects.append(ballot)
     return ballot_objects
 
+def run_election(list_of_cand_objs, election_df):
+    return pyrankvote.instant_runoff_voting(list_of_cand_objs, election_df['ballots'])
+
 
 
 def main():
@@ -46,6 +49,15 @@ def main():
 
     ballots = initialize_ballot_objs(df)
     df['ballots'] = ballots
+
+    cand_list = get_cand_list(df)
+    cand_list = initialize_cand_objs(cand_list)
+
+    election = run_election(cand_list, df)
+    print(election)
+
+
+    print('hi')
 
 
 
