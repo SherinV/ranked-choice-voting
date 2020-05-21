@@ -40,9 +40,10 @@ def initialize_ballot_objs(df):
     return ballot_objects
 
 def run_election(list_of_cand_objs, election_df):
-    return pyrankvote.instant_runoff_voting(list_of_cand_objs, election_df['ballots'])
+    return pyrankvote.instant_runoff_voting(list_of_cand_objs, election_df['ballots'], pick_random_if_blank=True)
 
-
+def rm_invalid_rows(df):
+    return df[df['candidate_list'] != '0']
 
 def main():
     df = pd.read_csv('./data/election_05-20-2020_08-09-28_3cands_16noise.csv')
@@ -50,6 +51,7 @@ def main():
     df = get_cands_into_single_cell(df)
 
     df['candidate_list'] = df['candidate_list'].apply(lambda x: x.replace('0, ', '').replace(', 0', ''))
+    df = rm_invalid_rows(df)
     df['candidate_list'] = df['candidate_list'].apply(lambda x: initialize_cand_objs(x))
 
     ballots = initialize_ballot_objs(df)
