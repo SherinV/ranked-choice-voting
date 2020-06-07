@@ -98,3 +98,4 @@ def pyrankvote_main():
 
 if __name__ == "__main__":
     df = pyrankvote_main()
+    print('hi')
