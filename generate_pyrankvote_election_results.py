@@ -71,7 +71,7 @@ def rm_invalid_rows(df):
     """
     return df[df['candidate_list'] != '0']
 
-def main():
+def pyrankvote_main():
     # Read in election
     df = pd.read_csv('./data/election_05-20-2020_08-09-28_3cands_16noise.csv')
 
@@ -97,4 +97,4 @@ def main():
 
 
 if __name__ == "__main__":
-    df = main()
+    df = pyrankvote_main()
