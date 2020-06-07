@@ -43,6 +43,11 @@ def run_election(list_of_cand_objs, election_df):
     return pyrankvote.instant_runoff_voting(list_of_cand_objs, election_df['ballots'], pick_random_if_blank=True)
 
 def rm_invalid_rows(df):
+    """
+    :goal: Get rid of rows with only 0s
+    :param df:
+    :return:
+    """
     return df[df['candidate_list'] != '0']
 
 def main():
@@ -51,7 +56,9 @@ def main():
     df = get_cands_into_single_cell(df)
 
     df['candidate_list'] = df['candidate_list'].apply(lambda x: x.replace('0, ', '').replace(', 0', ''))
+
     df = rm_invalid_rows(df)
+
     df['candidate_list'] = df['candidate_list'].apply(lambda x: initialize_cand_objs(x))
 
     ballots = initialize_ballot_objs(df)
@@ -61,15 +68,13 @@ def main():
     cand_list = initialize_cand_objs(cand_list)
 
     election = run_election(cand_list, df)
-    print(election)
+    pyrankvote_winner = election.get_winners()[0].name
 
+    df['pyrankvote_winner'] = pyrankvote_winner
 
-    print('hi')
-
-
-
-
+    return df
 
 
 if __name__ == "__main__":
-    main()
+    df = main()
+    print('hi')
