@@ -93,9 +93,9 @@ def pyrankvote_main():
     pyrankvote_winner = election.get_winners()[0].name  # Extracting single string rep'ing election winner
     df['pyrankvote_winner'] = pyrankvote_winner
 
-    return df
+    return df, cand_list, ballots
 
 
 if __name__ == "__main__":
-    df = pyrankvote_main()
-    print('hi')
+    pyrankvote_main()
+
