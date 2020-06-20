@@ -67,7 +67,7 @@ def return_winners(cand_matrix):
     return condorcet_winner
 
 
-def condorcet_main(candidates, ballots):
+def condorcet_compile(candidates, ballots):
     # all_ballots = list(df['ballot_objects'].values)
 
     print("Creating the ballot dictionary...")
@@ -98,14 +98,16 @@ def condorcet_main(candidates, ballots):
     print("\n\nCondorcet results: ")
     return return_winners(cand_matrix)
 
-
+def main():
+    # candidates = list of Candidate() objects
+    # ballots = list of Ballot() objects
+    df, cand_list, ballots = pyrankvote_main()
+    condorcet_winner = condorcet_compile(cand_list, ballots)
+    df['condorcet_winner'] = condorcet_winner
+    return df
 
 if __name__ == "__main__":
-    df, cand_list, ballots = pyrankvote_main()
-
-    #candidates = list of Candidate() objects
-    # ballots = list of Ballot() objects
-    condorcet_winner = condorcet_main(cand_list, ballots)
+    df = main()
     print('hi')
 
 
