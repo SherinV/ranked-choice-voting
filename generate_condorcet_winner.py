@@ -104,6 +104,11 @@ def main():
     df, cand_list, ballots = pyrankvote_main()
     condorcet_winner = condorcet_compile(cand_list, ballots)
     df['condorcet_winner'] = condorcet_winner
+
+    if df['pyrankvote_winner'].all() != df['condorcet_winner'].all():
+        df['spoiled'] = 'Y'
+    else:
+        df['spoiled'] = 'N'
     return df
 
 if __name__ == "__main__":
