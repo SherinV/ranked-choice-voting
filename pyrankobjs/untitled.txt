@@ -1,0 +1,119 @@
+0 election_05-04-2020_08-40-23_5cands_16noise.csv
+***********Election:  0
+df.shape (41363, 5)
+cand_list:  [<Candidate('candidate_1')>, <Candidate('candidate_5')>, <Candidate('candidate_2')>, <Candidate('candidate_3')>, <Candidate('candidate_4')>]
+get_winners [<Candidate('candidate_1')>]
+rounds 4
+election: ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     9129  Hopeful
+candidate_5     9010  Hopeful
+candidate_2     8455  Hopeful
+candidate_3     7911  Hopeful
+candidate_4     6858  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    10902  Hopeful
+candidate_5    10641  Hopeful
+candidate_3    10078  Hopeful
+candidate_2     9742  Rejected
+candidate_4        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    14068  Hopeful
+candidate_3    13675  Hopeful
+candidate_5    13620  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    20719  Elected
+candidate_3    20644  Rejected
+candidate_5        0  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+
+{'winner': [<Candidate('candidate_1')>], 'rounds': 4, 'election': <ElectionResults(4 rounds)>}
+1 election_04-30-2020_21-00-03_4_0.0225.csv
+***********Election:  1
+df.shape (43730, 4)
+cand_list:  [<Candidate('candidate_1')>, <Candidate('candidate_3')>, <Candidate('candidate_2')>, <Candidate('candidate_4')>]
+get_winners [<Candidate('candidate_1')>]
+rounds 3
+election: ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    13918  Hopeful
+candidate_3    12693  Hopeful
+candidate_2    10097  Hopeful
+candidate_4     7022  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    16902  Hopeful
+candidate_3    15679  Hopeful
+candidate_2    11149  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    22970  Elected
+candidate_3    20760  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+
+{'winner': [<Candidate('candidate_1')>], 'rounds': 3, 'election': <ElectionResults(3 rounds)>}
+* candidate_1    22970  Elected *
+2 election_05-02-2020_08-18-17_5cands_3noise.csv
+***********Election:  2
+df.shape (33485, 5)
+cand_list:  [<Candidate('candidate_4')>, <Candidate('candidate_1')>, <Candidate('candidate_2')>, <Candidate('candidate_3')>, <Candidate('candidate_5')>]
+get_winners [<Candidate('candidate_4')>]
+rounds 4
+election: ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     7502  Hopeful
+candidate_1     7177  Hopeful
+candidate_2     6848  Hopeful
+candidate_3     6384  Hopeful
+candidate_5     5574  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     9065  Hopeful
+candidate_1     8735  Hopeful
+candidate_2     8359  Hopeful
+candidate_3     7326  Rejected
+candidate_5        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4    11522  Hopeful
+candidate_1    11056  Hopeful
+candidate_2    10907  Rejected
+candidate_3        0  Rejected
+candidate_5        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4    17366  Elected
+candidate_1    16119  Rejected
+candidate_2        0  Rejected
+candidate_3        0  Rejected
+candidate_5        0  Rejected
+
+{'winner': [<Candidate('candidate_4')>], 'rounds': 4, 'election': <ElectionResults(4 rounds)>}
+3 election_05-04-2020_08-38-34_4cands_12noise.csv

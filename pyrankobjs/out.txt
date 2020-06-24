@@ -1,0 +1,27 @@
+ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    11653  Hopeful
+candidate_2    11650  Hopeful
+candidate_3    11161  Hopeful
+candidate_4     8418  Rejected
+6                  1  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    15395  Hopeful
+candidate_2    13756  Hopeful
+candidate_3    13732  Rejected
+candidate_4        0  Rejected
+6                  0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    22784  Elected
+candidate_2    20099  Rejected
+candidate_3        0  Rejected
+candidate_4        0  Rejected
+6                  0  Rejected
+
