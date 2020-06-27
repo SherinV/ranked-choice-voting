@@ -2,6 +2,7 @@ from generate_pyrankvote_election_results import pyrankvote_main
 import pandas as pd
 import re
 
+
 def create_ballot_dict(ballots):
     """
     """
@@ -22,9 +23,7 @@ def create_candidate_matrix(candidates):
     for cand in candidates:
         candidate_names.append(cand.name)
 
-    print("candidate_names: ", candidate_names)
     cand_matrix = pd.DataFrame(0, columns=candidate_names, index=candidate_names)
-    # display(cand_matrix)
     return cand_matrix
 
 
@@ -41,47 +40,34 @@ def symbolize_cand_matrix(cand_matrix):
                     else:
                         cand_matrix.loc[i, j] = '--'
                         cand_matrix.loc[j, i] = '++'
-    # display(cand_matrix)
     return cand_matrix
+
 
 def countX(lst, x):
     return lst.count(x)
 
+
 def return_winners(cand_matrix):
-    # This func returns Condorcet winner
+    results = []
     result_dict = {}
     for i in cand_matrix.index:
         key = ''.join([str(countX(list(cand_matrix.loc[i]), '--') + 1), ". ", i])
         result_dict[key] = [countX(list(cand_matrix.loc[i]), '--') + 1,
                             (countX(list(cand_matrix.loc[i]), '++'), countX(list(cand_matrix.loc[i]), '--'))]
-
-    keys = []
-    items = []
     for key, item in sorted(result_dict.items(), key=lambda x: x[1]):
-        keys.append(key.split('. ')[1])  # this will append candidate name
-        items.append(item[1][0])  # this will append # pairwise faceoffs won by candidate
+        results.append("Rank %s: [Rank, (Wins, losses] %s" % (key, item))
 
-    pairwise_df = pd.DataFrame(data=[items], columns=keys)
-    condorcet_winner = pairwise_df.max().reset_index().max().values[0]  # gets name of cand who won all faceoffs
-
-    return condorcet_winner
+    return results
 
 
 def condorcet_compile(candidates, ballots):
-    # all_ballots = list(df['ballot_objects'].values)
-
-    print("Creating the ballot dictionary...")
     ballot_dict = create_ballot_dict(ballots)
 
-    print("Creating the candidate matrix to store pairwise results...")
     candidate_names = []
     for cand in candidates:
         candidate_names.append(cand.name)
 
-    print("\ncandidate_names: ", candidate_names)
     cand_matrix = pd.DataFrame(0, columns=candidate_names, index=candidate_names)
-
-    print("\nUpdating the candidate matrix with pairwise results...")
 
     for votes, ballot in ballot_dict.values():
         ranked_candidates = [cand.name for cand in list(ballot.ranked_candidates)]
@@ -90,20 +76,33 @@ def condorcet_compile(candidates, ballots):
             process_cands.remove(current_cand)
             cand_matrix.loc[current_cand][process_cands] = cand_matrix.loc[current_cand][process_cands] + votes
 
-    print("\n")
-    print(cand_matrix)
-    print("\nSymbolizing the candidate matrix with pairwise results...\n")
-
     symbolize_cand_matrix(cand_matrix)
-    print("\n\nCondorcet results: ")
     return return_winners(cand_matrix)
+
+
+def parse_condorcet_results(condorcet_results):  # list
+    parsed_results = []
+
+    for i in condorcet_results:
+        cand = i.split(':')[0].split('. ')[1]
+        wins = int(i.split(':')[1].split(', ')[-2:][0].split('(')[1])
+        parsed_results.append((cand, wins))
+
+    return parsed_results
+
+
+def return_condorcet_winner(parsed_results):
+    return sorted(parsed_results, key=lambda x: x[1], reverse=True)[0][0]
 
 def main():
     # candidates = list of Candidate() objects
     # ballots = list of Ballot() objects
     df, cand_list, ballots = pyrankvote_main()
-    condorcet_winner = condorcet_compile(cand_list, ballots)
-    df['condorcet_winner'] = condorcet_winner
+    condorcet_results = condorcet_compile(cand_list, ballots)
+    parsed_condorcet_results = parse_condorcet_results(condorcet_results)
+    winner = return_condorcet_winner(parsed_condorcet_results)
+
+    df['condorcet_winner'] = winner
 
     if df['pyrankvote_winner'].all() != df['condorcet_winner'].all():
         df['spoiled'] = 'Y'
@@ -113,6 +112,5 @@ def main():
 
 if __name__ == "__main__":
     df = main()
-    print('hi')
 
 
