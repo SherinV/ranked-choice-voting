@@ -1,0 +1,735 @@
+,winner,rounds,election,Can1Total,Can2Total,Can3Total,Can4Total,total_1st_place_winner_votes,total_last_place_winner_votes
+0,candidate_1,4,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     9129  Hopeful
+candidate_5     9010  Hopeful
+candidate_2     8455  Hopeful
+candidate_3     7911  Hopeful
+candidate_4     6858  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    10902  Hopeful
+candidate_5    10640  Hopeful
+candidate_3    10078  Hopeful
+candidate_2     9743  Rejected
+candidate_4        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    14069  Hopeful
+candidate_3    13671  Hopeful
+candidate_5    13623  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    20693  Elected
+candidate_3    20670  Rejected
+candidate_5        0  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+",54793.0,18198.0,52330.0,6858.0,34100.0,0.0
+1,candidate_1,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    13918  Hopeful
+candidate_3    12693  Hopeful
+candidate_2    10097  Hopeful
+candidate_4     7022  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    16901  Hopeful
+candidate_3    15679  Hopeful
+candidate_2    11150  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    22940  Elected
+candidate_3    20790  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+",53759.0,21247.0,49162.0,7022.0,30819.0,0.0
+2,candidate_4,4,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     7502  Hopeful
+candidate_1     7177  Hopeful
+candidate_2     6848  Hopeful
+candidate_3     6384  Hopeful
+candidate_5     5574  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     9065  Hopeful
+candidate_1     8735  Hopeful
+candidate_2     8359  Hopeful
+candidate_3     7326  Rejected
+candidate_5        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4    11522  Hopeful
+candidate_1    11056  Hopeful
+candidate_2    10907  Rejected
+candidate_3        0  Rejected
+candidate_5        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4    17358  Elected
+candidate_1    16127  Rejected
+candidate_2        0  Rejected
+candidate_3        0  Rejected
+candidate_5        0  Rejected
+",43095.0,26114.0,13710.0,45447.0,0.0,28089.0
+3,candidate_1,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     3400  Hopeful
+candidate_4     2343  Hopeful
+candidate_2     2269  Hopeful
+candidate_3     2053  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     4475  Hopeful
+candidate_4     2897  Hopeful
+candidate_2     2693  Rejected
+candidate_3        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     5761  Elected
+candidate_4     4304  Rejected
+candidate_2        0  Rejected
+candidate_3        0  Rejected
+",13636.0,4962.0,2053.0,9544.0,7875.0,0.0
+4,candidate_2,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2    11236  Hopeful
+candidate_1    11210  Hopeful
+candidate_3    10110  Hopeful
+candidate_4     9061  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2    15605  Hopeful
+candidate_1    14787  Hopeful
+candidate_3    11225  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2    25019  Elected
+candidate_1    16598  Rejected
+candidate_3        0  Rejected
+candidate_4        0  Rejected
+",42595.0,51860.0,21335.0,9061.0,0.0,0.0
+5,candidate_4,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     2731  Hopeful
+candidate_4     2637  Hopeful
+candidate_3     2104  Hopeful
+candidate_2     1718  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     3584  Hopeful
+candidate_4     3052  Hopeful
+candidate_3     2554  Rejected
+candidate_2        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     4771  Elected
+candidate_1     4419  Rejected
+candidate_3        0  Rejected
+candidate_2        0  Rejected
+",10734.0,1718.0,4658.0,10460.0,0.0,5689.0
+6,candidate_3,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2     8807  Hopeful
+candidate_3     8199  Hopeful
+candidate_1     1816  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     9855  Elected
+candidate_2     8967  Rejected
+candidate_1        0  Rejected
+",1816.0,17774.0,18054.0,0.0,0.0,0.0
+7,candidate_3,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     8907  Hopeful
+candidate_1     7646  Hopeful
+candidate_2     7418  Hopeful
+candidate_4     7277  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3    11452  Hopeful
+candidate_1    10753  Hopeful
+candidate_2     9043  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3    17217  Elected
+candidate_1    14031  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+",32430.0,16461.0,37576.0,7277.0,0.0,0.0
+8,candidate_2,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     2244  Hopeful
+candidate_2     2034  Hopeful
+candidate_3     1445  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2     3091  Elected
+candidate_1     2632  Rejected
+candidate_3        0  Rejected
+",4876.0,5125.0,1445.0,0.0,0.0,0.0
+9,candidate_3,5,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_6     4300  Hopeful
+candidate_3     4260  Hopeful
+candidate_1     4224  Hopeful
+candidate_2     4188  Hopeful
+candidate_5     4162  Hopeful
+candidate_4     3847  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2     5095  Hopeful
+candidate_6     5068  Hopeful
+candidate_3     5030  Hopeful
+candidate_5     4912  Hopeful
+candidate_1     4876  Rejected
+candidate_4        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     6496  Hopeful
+candidate_2     6237  Hopeful
+candidate_6     6156  Hopeful
+candidate_5     6092  Rejected
+candidate_1        0  Rejected
+candidate_4        0  Rejected
+
+ROUND 4
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     8630  Hopeful
+candidate_6     8192  Hopeful
+candidate_2     8159  Rejected
+candidate_5        0  Rejected
+candidate_1        0  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3    12654  Elected
+candidate_6    12327  Rejected
+candidate_2        0  Rejected
+candidate_5        0  Rejected
+candidate_1        0  Rejected
+candidate_4        0  Rejected
+",9100.0,23679.0,37070.0,3847.0,0.0,0.0
+10,candidate_4,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4    10258  Hopeful
+candidate_3     9745  Hopeful
+candidate_2     8003  Hopeful
+candidate_1     5309  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3    12504  Hopeful
+candidate_4    11398  Hopeful
+candidate_2     9413  Rejected
+candidate_1        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4    17141  Elected
+candidate_3    16174  Rejected
+candidate_2        0  Rejected
+candidate_1        0  Rejected
+",5309.0,17416.0,38423.0,38797.0,0.0,21656.0
+11,candidate_3,4,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1      593  Hopeful
+candidate_4      583  Hopeful
+candidate_3      565  Hopeful
+candidate_2      539  Hopeful
+candidate_5      487  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3      737  Hopeful
+candidate_4      722  Hopeful
+candidate_1      692  Hopeful
+candidate_2      616  Rejected
+candidate_5        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3      988  Hopeful
+candidate_4      921  Hopeful
+candidate_1      858  Rejected
+candidate_2        0  Rejected
+candidate_5        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     1452  Elected
+candidate_4     1315  Rejected
+candidate_1        0  Rejected
+candidate_2        0  Rejected
+candidate_5        0  Rejected
+",2143.0,1155.0,3742.0,3541.0,0.0,0.0
+12,candidate_3,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     6130  Hopeful
+candidate_4     5288  Hopeful
+candidate_1     4751  Hopeful
+candidate_2     4557  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     8294  Hopeful
+candidate_4     6247  Hopeful
+candidate_1     6185  Rejected
+candidate_2        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3    11278  Elected
+candidate_4     9448  Rejected
+candidate_1        0  Rejected
+candidate_2        0  Rejected
+",10936.0,4557.0,25702.0,20983.0,0.0,0.0
+13,candidate_2,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2    10855  Hopeful
+candidate_1    10192  Hopeful
+candidate_3     7067  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2    14982  Elected
+candidate_1    13132  Rejected
+candidate_3        0  Rejected
+",23324.0,25837.0,7067.0,0.0,0.0,0.0
+14,candidate_3,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     2553  Hopeful
+candidate_3     2166  Hopeful
+candidate_2     1644  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     3728  Elected
+candidate_1     2635  Rejected
+candidate_2        0  Rejected
+",5188.0,1644.0,5894.0,0.0,0.0,0.0
+15,candidate_1,4,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     9156  Hopeful
+candidate_4     8476  Hopeful
+candidate_5     6801  Hopeful
+candidate_3     6382  Hopeful
+candidate_2     5847  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    10398  Hopeful
+candidate_4    10295  Hopeful
+candidate_5     8304  Hopeful
+candidate_3     7665  Rejected
+candidate_2        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    12950  Hopeful
+candidate_4    12346  Hopeful
+candidate_5    11366  Rejected
+candidate_3        0  Rejected
+candidate_2        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    19221  Elected
+candidate_4    17441  Rejected
+candidate_5        0  Rejected
+candidate_3        0  Rejected
+candidate_2        0  Rejected
+",51725.0,5847.0,14047.0,48558.0,32504.0,0.0
+16,candidate_1,4,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     6574  Hopeful
+candidate_5     6240  Hopeful
+candidate_2     5761  Hopeful
+candidate_3     5521  Hopeful
+candidate_4     4695  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     7830  Hopeful
+candidate_3     7211  Hopeful
+candidate_5     6949  Hopeful
+candidate_2     6801  Rejected
+candidate_4        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    10075  Hopeful
+candidate_3     9702  Hopeful
+candidate_5     9014  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    14854  Elected
+candidate_3    13937  Rejected
+candidate_5        0  Rejected
+candidate_2        0  Rejected
+candidate_4        0  Rejected
+",39333.0,12562.0,36371.0,4695.0,24479.0,0.0
+17,candidate_1,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     1033  Hopeful
+candidate_2     1000  Hopeful
+candidate_3      593  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     1545  Elected
+candidate_2     1081  Rejected
+candidate_3        0  Rejected
+",2578.0,2081.0,593.0,0.0,1033.0,0.0
+18,candidate_2,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     3282  Hopeful
+candidate_2     3114  Hopeful
+candidate_3      711  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2     3723  Elected
+candidate_1     3384  Rejected
+candidate_3        0  Rejected
+",6666.0,6837.0,711.0,0.0,0.0,0.0
+19,candidate_2,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2    14039  Hopeful
+candidate_3    11821  Hopeful
+candidate_4    11750  Hopeful
+candidate_1     7775  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2    17013  Hopeful
+candidate_4    15184  Hopeful
+candidate_3    13188  Rejected
+candidate_1        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2    23339  Elected
+candidate_4    22046  Rejected
+candidate_3        0  Rejected
+candidate_1        0  Rejected
+",7775.0,54391.0,25009.0,48980.0,0.0,0.0
+20,candidate_2,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2     1216  Hopeful
+candidate_1      889  Hopeful
+candidate_4      862  Hopeful
+candidate_3      640  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2     1257  Hopeful
+candidate_1     1181  Hopeful
+candidate_4     1169  Rejected
+candidate_3        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_2     1891  Elected
+candidate_1     1716  Rejected
+candidate_4        0  Rejected
+candidate_3        0  Rejected
+",3786.0,4364.0,640.0,2031.0,0.0,0.0
+21,candidate_3,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     5418  Hopeful
+candidate_2     4518  Hopeful
+candidate_1     3443  Hopeful
+candidate_4     3184  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     6729  Hopeful
+candidate_2     4998  Hopeful
+candidate_1     4836  Rejected
+candidate_4        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     9117  Elected
+candidate_2     7446  Rejected
+candidate_1        0  Rejected
+candidate_4        0  Rejected
+",8279.0,16962.0,21264.0,3184.0,0.0,0.0
+22,candidate_4,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     3381  Hopeful
+candidate_1     2748  Hopeful
+candidate_3     2411  Hopeful
+candidate_2     2008  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     3895  Hopeful
+candidate_1     3710  Hopeful
+candidate_3     2943  Rejected
+candidate_2        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     5608  Elected
+candidate_1     4940  Rejected
+candidate_3        0  Rejected
+candidate_2        0  Rejected
+",11398.0,2008.0,5354.0,12884.0,0.0,7276.0
+23,candidate_3,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     6309  Hopeful
+candidate_2     5588  Hopeful
+candidate_1     1505  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     6891  Elected
+candidate_2     6511  Rejected
+candidate_1        0  Rejected
+",1505.0,12099.0,13200.0,0.0,0.0,0.0
+24,candidate_1,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3     1600  Hopeful
+candidate_1     1478  Hopeful
+candidate_2      856  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     2110  Elected
+candidate_3     1824  Rejected
+candidate_2        0  Rejected
+",3588.0,856.0,3424.0,0.0,1478.0,0.0
+25,candidate_3,2,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3    23128  Hopeful
+candidate_1    14927  Hopeful
+candidate_2     9359  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_3    29802  Elected
+candidate_1    17612  Rejected
+candidate_2        0  Rejected
+",32539.0,9359.0,52930.0,0.0,0.0,0.0
+26,candidate_4,4,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     1816  Hopeful
+candidate_2     1754  Hopeful
+candidate_1     1674  Hopeful
+candidate_3     1673  Hopeful
+candidate_5     1449  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1     2199  Hopeful
+candidate_4     2192  Hopeful
+candidate_3     1998  Hopeful
+candidate_2     1977  Rejected
+candidate_5        0  Rejected
+
+ROUND 3
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     3042  Hopeful
+candidate_1     2772  Hopeful
+candidate_3     2552  Rejected
+candidate_2        0  Rejected
+candidate_5        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     4254  Elected
+candidate_1     4112  Rejected
+candidate_3        0  Rejected
+candidate_2        0  Rejected
+candidate_5        0  Rejected
+",10757.0,3731.0,6223.0,11304.0,0.0,7050.0
+27,candidate_4,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     1424  Hopeful
+candidate_3      967  Hopeful
+candidate_1      806  Hopeful
+candidate_2      575  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     1519  Hopeful
+candidate_1     1146  Hopeful
+candidate_3     1107  Rejected
+candidate_2        0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_4     2032  Elected
+candidate_1     1740  Rejected
+candidate_3        0  Rejected
+candidate_2        0  Rejected
+",3692.0,575.0,2074.0,4975.0,0.0,2943.0
+28,candidate_1,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    10983  Hopeful
+candidate_2     8113  Hopeful
+candidate_4     7909  Hopeful
+candidate_3     6113  Rejected
+6                  1  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    13263  Hopeful
+candidate_4    10016  Hopeful
+candidate_2     9840  Rejected
+candidate_3        0  Rejected
+6                  0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    17015  Elected
+candidate_4    16104  Rejected
+candidate_2        0  Rejected
+candidate_3        0  Rejected
+6                  0  Rejected
+",41261.0,17953.0,6113.0,34029.0,24246.0,0.0
+29,candidate_1,3,"ROUND 1
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    11653  Hopeful
+candidate_2    11650  Hopeful
+candidate_3    11161  Hopeful
+candidate_4     8418  Rejected
+6                  1  Rejected
+
+ROUND 2
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    15394  Hopeful
+candidate_2    13758  Hopeful
+candidate_3    13731  Rejected
+candidate_4        0  Rejected
+6                  0  Rejected
+
+FINAL RESULT
+Candidate      Votes  Status
+-----------  -------  --------
+candidate_1    22777  Elected
+candidate_2    20106  Rejected
+candidate_3        0  Rejected
+candidate_4        0  Rejected
+6                  0  Rejected
+",49824.0,45514.0,24892.0,8418.0,27047.0,0.0
