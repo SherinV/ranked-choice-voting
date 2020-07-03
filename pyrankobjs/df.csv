@@ -1,5 +1,5 @@
-winner,rounds,election,can1firstRoundVotes,winnerfirstRoundVotes,can2firstRoundVotes,can3firstRoundVotes,can4firstRoundVotes,can1secondRoundVotes,winnersecondRoundVotes,can3secondRoundVotes,can2secondRoundVotes,can4secondRoundVotes,can1thirdRoundVotes,winnerthirdRoundVotes,can3thirdRoundVotes,can2thirdRoundVotes,can4thirdRoundVotes,can1finalRoundVotes,winnerfinalRoundVotes,can3finalRoundVotes,can2finalRoundVotes,can4finalRoundVotes,election_id,can3fourthRoundVotes,winnerfourthRoundVotes,can2fourthRoundVotes,can1fourthRoundVotes,can4fourthRoundVotes
-candidate_1,4,"ROUND 1
+,winner,rounds,election,can1firstRoundVotes,winnerfirstRoundVotes,can2firstRoundVotes,can3firstRoundVotes,can4firstRoundVotes,can1secondRoundVotes,winnersecondRoundVotes,can3secondRoundVotes,can2secondRoundVotes,can4secondRoundVotes,can1thirdRoundVotes,winnerthirdRoundVotes,can3thirdRoundVotes,can2thirdRoundVotes,can4thirdRoundVotes,can1finalRoundVotes,winnerfinalRoundVotes,can3finalRoundVotes,can2finalRoundVotes,can4finalRoundVotes,election_id,can3fourthRoundVotes,winnerfourthRoundVotes,can2fourthRoundVotes,can1fourthRoundVotes,can4fourthRoundVotes
+0,candidate_1,4,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     9129  Hopeful
@@ -34,8 +34,8 @@ candidate_3    20670  Rejected
 candidate_5        0  Rejected
 candidate_2        0  Rejected
 candidate_4        0  Rejected
-",9129,9129,8455,7911,6858.0,10902.0,10902.0,10078.0,9743.0,0.0,14069.0,14069.0,13671.0,0.0,0.0,20693,20693,20670,0,0.0,election_05-04-2020_08-40-23_5cands_16noise.csv,,,,,
-candidate_1,3,"ROUND 1
+",9129,9129,8455,7911,6858.0,10902.0,10902.0,10078.0,9743.0,0.0,14069.0,14069.0,13671.0,0.0,0.0,20693,20693,20670,0,0.0,election_05-04-2020_08-40-23_5cands_16noise.csv,0.0,0.0,0.0,0.0,0.0
+1,candidate_1,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1    13918  Hopeful
@@ -58,8 +58,8 @@ candidate_1    22940  Elected
 candidate_3    20790  Rejected
 candidate_2        0  Rejected
 candidate_4        0  Rejected
-",13918,13918,10097,12693,7022.0,16901.0,16901.0,15679.0,11150.0,0.0,,,,,,22940,22940,20790,0,0.0,election_04-30-2020_21-00-03_4_0.0225.csv,,,,,
-candidate_4,4,"ROUND 1
+",13918,13918,10097,12693,7022.0,16901.0,16901.0,15679.0,11150.0,0.0,0.0,0.0,0.0,0.0,0.0,22940,22940,20790,0,0.0,election_04-30-2020_21-00-03_4_0.0225.csv,0.0,0.0,0.0,0.0,0.0
+2,candidate_4,4,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_4     7502  Hopeful
@@ -94,8 +94,8 @@ candidate_1    16127  Rejected
 candidate_2        0  Rejected
 candidate_3        0  Rejected
 candidate_5        0  Rejected
-",7177,7502,6848,6384,7502.0,8735.0,9065.0,7326.0,8359.0,9065.0,11056.0,11522.0,0.0,10907.0,11522.0,16127,17358,0,0,17358.0,election_05-02-2020_08-18-17_5cands_3noise.csv,,,,,
-candidate_1,3,"ROUND 1
+",7177,7502,6848,6384,7502.0,8735.0,9065.0,7326.0,8359.0,9065.0,11056.0,11522.0,0.0,10907.0,11522.0,16127,17358,0,0,17358.0,election_05-02-2020_08-18-17_5cands_3noise.csv,0.0,0.0,0.0,0.0,0.0
+3,candidate_1,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     3400  Hopeful
@@ -118,8 +118,8 @@ candidate_1     5761  Elected
 candidate_4     4304  Rejected
 candidate_2        0  Rejected
 candidate_3        0  Rejected
-",3400,3400,2269,2053,2343.0,4475.0,4475.0,0.0,2693.0,2897.0,,,,,,5761,5761,0,0,4304.0,election_05-04-2020_08-38-34_4cands_12noise.csv,,,,,
-candidate_2,3,"ROUND 1
+",3400,3400,2269,2053,2343.0,4475.0,4475.0,0.0,2693.0,2897.0,0.0,0.0,0.0,0.0,0.0,5761,5761,0,0,4304.0,election_05-04-2020_08-38-34_4cands_12noise.csv,0.0,0.0,0.0,0.0,0.0
+4,candidate_2,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_2    11236  Hopeful
@@ -142,8 +142,8 @@ candidate_2    25019  Elected
 candidate_1    16598  Rejected
 candidate_3        0  Rejected
 candidate_4        0  Rejected
-",11210,11236,11236,10110,9061.0,14787.0,15605.0,11225.0,15605.0,0.0,,,,,,16598,25019,0,25019,0.0,election_04-30-2020_20-59-34_4_0.0375.csv,,,,,
-candidate_4,3,"ROUND 1
+",11210,11236,11236,10110,9061.0,14787.0,15605.0,11225.0,15605.0,0.0,0.0,0.0,0.0,0.0,0.0,16598,25019,0,25019,0.0,election_04-30-2020_20-59-34_4_0.0375.csv,0.0,0.0,0.0,0.0,0.0
+5,candidate_4,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     2731  Hopeful
@@ -166,8 +166,8 @@ candidate_4     4771  Elected
 candidate_1     4419  Rejected
 candidate_3        0  Rejected
 candidate_2        0  Rejected
-",2731,2637,1718,2104,2637.0,3584.0,3052.0,2554.0,0.0,3052.0,,,,,,4419,4771,0,0,4771.0,election_04-30-2020_21-06-11_4_0.0125.csv,,,,,
-candidate_3,2,"ROUND 1
+",2731,2637,1718,2104,2637.0,3584.0,3052.0,2554.0,0.0,3052.0,0.0,0.0,0.0,0.0,0.0,4419,4771,0,0,4771.0,election_04-30-2020_21-06-11_4_0.0125.csv,0.0,0.0,0.0,0.0,0.0
+6,candidate_3,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_2     8807  Hopeful
@@ -180,8 +180,8 @@ Candidate      Votes  Status
 candidate_3     9855  Elected
 candidate_2     8967  Rejected
 candidate_1        0  Rejected
-",1816,8199,8807,8199,,,,,,,,,,,,0,9855,9855,8967,,election_04-30-2020_21-08-19_3_0.013333333333333334.csv,,,,,
-candidate_3,3,"ROUND 1
+",1816,8199,8807,8199,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,9855,9855,8967,0.0,election_04-30-2020_21-08-19_3_0.013333333333333334.csv,0.0,0.0,0.0,0.0,0.0
+7,candidate_3,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_3     8907  Hopeful
@@ -204,8 +204,8 @@ candidate_3    17217  Elected
 candidate_1    14031  Rejected
 candidate_2        0  Rejected
 candidate_4        0  Rejected
-",7646,8907,7418,8907,7277.0,10753.0,11452.0,11452.0,9043.0,0.0,,,,,,14031,17217,17217,0,0.0,election_05-04-2020_08-40-33_4cands_10noise.csv,,,,,
-candidate_2,2,"ROUND 1
+",7646,8907,7418,8907,7277.0,10753.0,11452.0,11452.0,9043.0,0.0,0.0,0.0,0.0,0.0,0.0,14031,17217,17217,0,0.0,election_05-04-2020_08-40-33_4cands_10noise.csv,0.0,0.0,0.0,0.0,0.0
+8,candidate_2,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     2244  Hopeful
@@ -218,8 +218,8 @@ Candidate      Votes  Status
 candidate_2     3091  Elected
 candidate_1     2632  Rejected
 candidate_3        0  Rejected
-",2244,2034,2034,1445,,,,,,,,,,,,2632,3091,0,3091,,election_05-02-2020_08-18-31_3cands_18noise.csv,,,,,
-candidate_3,5,"ROUND 1
+",2244,2034,2034,1445,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2632,3091,0,3091,0.0,election_05-02-2020_08-18-31_3cands_18noise.csv,0.0,0.0,0.0,0.0,0.0
+9,candidate_3,5,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_6     4300  Hopeful
@@ -269,7 +269,7 @@ candidate_5        0  Rejected
 candidate_1        0  Rejected
 candidate_4        0  Rejected
 ",4224,4260,4188,4260,3847.0,4876.0,5030.0,5030.0,5095.0,0.0,0.0,6496.0,6496.0,6237.0,0.0,0,12654,12654,0,0.0,election_04-30-2020_21-04-28_6_0.006666666666666667.csv,8630.0,8630.0,8159.0,0.0,0.0
-candidate_4,3,"ROUND 1
+10,candidate_4,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_4    10258  Hopeful
@@ -292,8 +292,8 @@ candidate_4    17141  Elected
 candidate_3    16174  Rejected
 candidate_2        0  Rejected
 candidate_1        0  Rejected
-",5309,10258,8003,9745,10258.0,0.0,11398.0,12504.0,9413.0,11398.0,,,,,,0,17141,16174,0,17141.0,election_04-30-2020_21-08-00_4_0.0275.csv,,,,,
-candidate_3,4,"ROUND 1
+",5309,10258,8003,9745,10258.0,0.0,11398.0,12504.0,9413.0,11398.0,0.0,0.0,0.0,0.0,0.0,0,17141,16174,0,17141.0,election_04-30-2020_21-08-00_4_0.0275.csv,0.0,0.0,0.0,0.0,0.0
+11,candidate_3,4,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1      593  Hopeful
@@ -328,8 +328,8 @@ candidate_4     1315  Rejected
 candidate_1        0  Rejected
 candidate_2        0  Rejected
 candidate_5        0  Rejected
-",593,565,539,565,583.0,692.0,737.0,737.0,616.0,722.0,858.0,988.0,988.0,0.0,921.0,0,1452,1452,0,1315.0,election_05-04-2020_08-39-40_5cands_12noise.csv,,,,,
-candidate_3,3,"ROUND 1
+",593,565,539,565,583.0,692.0,737.0,737.0,616.0,722.0,858.0,988.0,988.0,0.0,921.0,0,1452,1452,0,1315.0,election_05-04-2020_08-39-40_5cands_12noise.csv,0.0,0.0,0.0,0.0,0.0
+12,candidate_3,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_3     6130  Hopeful
@@ -352,8 +352,8 @@ candidate_3    11278  Elected
 candidate_4     9448  Rejected
 candidate_1        0  Rejected
 candidate_2        0  Rejected
-",4751,6130,4557,6130,5288.0,6185.0,8294.0,8294.0,0.0,6247.0,,,,,,0,11278,11278,0,9448.0,election_04-30-2020_21-07-57_4_0.01.csv,,,,,
-candidate_2,2,"ROUND 1
+",4751,6130,4557,6130,5288.0,6185.0,8294.0,8294.0,0.0,6247.0,0.0,0.0,0.0,0.0,0.0,0,11278,11278,0,9448.0,election_04-30-2020_21-07-57_4_0.01.csv,0.0,0.0,0.0,0.0,0.0
+13,candidate_2,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_2    10855  Hopeful
@@ -366,8 +366,8 @@ Candidate      Votes  Status
 candidate_2    14982  Elected
 candidate_1    13132  Rejected
 candidate_3        0  Rejected
-",10192,10855,10855,7067,,,,,,,,,,,,13132,14982,0,14982,,election_04-30-2020_21-08-54_3_0.02.csv,,,,,
-candidate_3,2,"ROUND 1
+",10192,10855,10855,7067,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,13132,14982,0,14982,0.0,election_04-30-2020_21-08-54_3_0.02.csv,0.0,0.0,0.0,0.0,0.0
+14,candidate_3,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     2553  Hopeful
@@ -380,8 +380,8 @@ Candidate      Votes  Status
 candidate_3     3728  Elected
 candidate_1     2635  Rejected
 candidate_2        0  Rejected
-",2553,2166,1644,2166,,,,,,,,,,,,2635,3728,3728,0,,election_05-02-2020_08-19-42_3cands_2noise.csv,,,,,
-candidate_1,4,"ROUND 1
+",2553,2166,1644,2166,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2635,3728,3728,0,0.0,election_05-02-2020_08-19-42_3cands_2noise.csv,0.0,0.0,0.0,0.0,0.0
+15,candidate_1,4,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     9156  Hopeful
@@ -416,8 +416,8 @@ candidate_4    17441  Rejected
 candidate_5        0  Rejected
 candidate_3        0  Rejected
 candidate_2        0  Rejected
-",9156,9156,5847,6382,8476.0,10398.0,10398.0,7665.0,0.0,10295.0,12950.0,12950.0,0.0,0.0,12346.0,19221,19221,0,0,17441.0,election_05-04-2020_08-40-11_5cands_8noise.csv,,,,,
-candidate_1,4,"ROUND 1
+",9156,9156,5847,6382,8476.0,10398.0,10398.0,7665.0,0.0,10295.0,12950.0,12950.0,0.0,0.0,12346.0,19221,19221,0,0,17441.0,election_05-04-2020_08-40-11_5cands_8noise.csv,0.0,0.0,0.0,0.0,0.0
+16,candidate_1,4,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     6574  Hopeful
@@ -452,8 +452,8 @@ candidate_3    13937  Rejected
 candidate_5        0  Rejected
 candidate_2        0  Rejected
 candidate_4        0  Rejected
-",6574,6574,5761,5521,4695.0,7830.0,7830.0,7211.0,6801.0,0.0,10075.0,10075.0,9702.0,0.0,0.0,14854,14854,13937,0,0.0,election_05-04-2020_08-40-56_5cands_17noise.csv,,,,,
-candidate_1,2,"ROUND 1
+",6574,6574,5761,5521,4695.0,7830.0,7830.0,7211.0,6801.0,0.0,10075.0,10075.0,9702.0,0.0,0.0,14854,14854,13937,0,0.0,election_05-04-2020_08-40-56_5cands_17noise.csv,0.0,0.0,0.0,0.0,0.0
+17,candidate_1,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     1033  Hopeful
@@ -466,8 +466,8 @@ Candidate      Votes  Status
 candidate_1     1545  Elected
 candidate_2     1081  Rejected
 candidate_3        0  Rejected
-",1033,1033,1000,593,,,,,,,,,,,,1545,1545,0,1081,,election_05-02-2020_08-17-43_3cands_11noise.csv,,,,,
-candidate_2,2,"ROUND 1
+",1033,1033,1000,593,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1545,1545,0,1081,0.0,election_05-02-2020_08-17-43_3cands_11noise.csv,0.0,0.0,0.0,0.0,0.0
+18,candidate_2,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1     3282  Hopeful
@@ -480,8 +480,8 @@ Candidate      Votes  Status
 candidate_2     3723  Elected
 candidate_1     3384  Rejected
 candidate_3        0  Rejected
-",3282,3114,3114,711,,,,,,,,,,,,3384,3723,0,3723,,election_05-02-2020_08-19-53_3cands_16noise.csv,,,,,
-candidate_2,3,"ROUND 1
+",3282,3114,3114,711,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3384,3723,0,3723,0.0,election_05-02-2020_08-19-53_3cands_16noise.csv,0.0,0.0,0.0,0.0,0.0
+19,candidate_2,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_2    14039  Hopeful
@@ -504,8 +504,8 @@ candidate_2    23339  Elected
 candidate_4    22046  Rejected
 candidate_3        0  Rejected
 candidate_1        0  Rejected
-",7775,14039,14039,11821,11750.0,0.0,17013.0,13188.0,17013.0,15184.0,,,,,,0,23339,0,23339,22046.0,election_05-04-2020_08-41-05_4cands_3noise.csv,,,,,
-candidate_2,3,"ROUND 1
+",7775,14039,14039,11821,11750.0,0.0,17013.0,13188.0,17013.0,15184.0,0.0,0.0,0.0,0.0,0.0,0,23339,0,23339,22046.0,election_05-04-2020_08-41-05_4cands_3noise.csv,0.0,0.0,0.0,0.0,0.0
+20,candidate_2,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_2     1216  Hopeful
@@ -528,8 +528,8 @@ candidate_2     1891  Elected
 candidate_1     1716  Rejected
 candidate_4        0  Rejected
 candidate_3        0  Rejected
-",889,1216,1216,640,862.0,1181.0,1257.0,0.0,1257.0,1169.0,,,,,,1716,1891,0,1891,0.0,election_05-02-2020_08-17-57_4cands_5noise.csv,,,,,
-candidate_3,3,"ROUND 1
+",889,1216,1216,640,862.0,1181.0,1257.0,0.0,1257.0,1169.0,0.0,0.0,0.0,0.0,0.0,1716,1891,0,1891,0.0,election_05-02-2020_08-17-57_4cands_5noise.csv,0.0,0.0,0.0,0.0,0.0
+21,candidate_3,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_3     5418  Hopeful
@@ -552,8 +552,8 @@ candidate_3     9117  Elected
 candidate_2     7446  Rejected
 candidate_1        0  Rejected
 candidate_4        0  Rejected
-",3443,5418,4518,5418,3184.0,4836.0,6729.0,6729.0,4998.0,0.0,,,,,,0,9117,9117,7446,0.0,election_05-04-2020_08-40-00_4cands_13noise.csv,,,,,
-candidate_4,3,"ROUND 1
+",3443,5418,4518,5418,3184.0,4836.0,6729.0,6729.0,4998.0,0.0,0.0,0.0,0.0,0.0,0.0,0,9117,9117,7446,0.0,election_05-04-2020_08-40-00_4cands_13noise.csv,0.0,0.0,0.0,0.0,0.0
+22,candidate_4,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_4     3381  Hopeful
@@ -576,8 +576,8 @@ candidate_4     5608  Elected
 candidate_1     4940  Rejected
 candidate_3        0  Rejected
 candidate_2        0  Rejected
-",2748,3381,2008,2411,3381.0,3710.0,3895.0,2943.0,0.0,3895.0,,,,,,4940,5608,0,0,5608.0,election_05-02-2020_08-19-20_4cands_12noise.csv,,,,,
-candidate_3,2,"ROUND 1
+",2748,3381,2008,2411,3381.0,3710.0,3895.0,2943.0,0.0,3895.0,0.0,0.0,0.0,0.0,0.0,4940,5608,0,0,5608.0,election_05-02-2020_08-19-20_4cands_12noise.csv,0.0,0.0,0.0,0.0,0.0
+23,candidate_3,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_3     6309  Hopeful
@@ -590,8 +590,8 @@ Candidate      Votes  Status
 candidate_3     6891  Elected
 candidate_2     6511  Rejected
 candidate_1        0  Rejected
-",1505,6309,5588,6309,,,,,,,,,,,,0,6891,6891,6511,,election_05-02-2020_08-19-31_3cands_13noise.csv,,,,,
-candidate_1,2,"ROUND 1
+",1505,6309,5588,6309,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,6891,6891,6511,0.0,election_05-02-2020_08-19-31_3cands_13noise.csv,0.0,0.0,0.0,0.0,0.0
+24,candidate_1,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_3     1600  Hopeful
@@ -604,8 +604,8 @@ Candidate      Votes  Status
 candidate_1     2110  Elected
 candidate_3     1824  Rejected
 candidate_2        0  Rejected
-",1478,1478,856,1600,,,,,,,,,,,,2110,2110,1824,0,,election_05-04-2020_08-40-42_3cands_20noise.csv,,,,,
-candidate_3,2,"ROUND 1
+",1478,1478,856,1600,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2110,2110,1824,0,0.0,election_05-04-2020_08-40-42_3cands_20noise.csv,0.0,0.0,0.0,0.0,0.0
+25,candidate_3,2,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_3    23128  Hopeful
@@ -618,8 +618,8 @@ Candidate      Votes  Status
 candidate_3    29802  Elected
 candidate_1    17612  Rejected
 candidate_2        0  Rejected
-",14927,23128,9359,23128,,,,,,,,,,,,17612,29802,29802,0,,election_05-02-2020_08-18-42_3cands_7noise.csv,,,,,
-candidate_4,4,"ROUND 1
+",14927,23128,9359,23128,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,17612,29802,29802,0,0.0,election_05-02-2020_08-18-42_3cands_7noise.csv,0.0,0.0,0.0,0.0,0.0
+26,candidate_4,4,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_4     1816  Hopeful
@@ -654,8 +654,8 @@ candidate_1     4112  Rejected
 candidate_3        0  Rejected
 candidate_2        0  Rejected
 candidate_5        0  Rejected
-",1674,1816,1754,1673,1816.0,2199.0,2192.0,1998.0,1977.0,2192.0,2772.0,3042.0,2552.0,0.0,3042.0,4112,4254,0,0,4254.0,election_05-04-2020_08-39-51_5cands_20noise.csv,,,,,
-candidate_4,3,"ROUND 1
+",1674,1816,1754,1673,1816.0,2199.0,2192.0,1998.0,1977.0,2192.0,2772.0,3042.0,2552.0,0.0,3042.0,4112,4254,0,0,4254.0,election_05-04-2020_08-39-51_5cands_20noise.csv,0.0,0.0,0.0,0.0,0.0
+27,candidate_4,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_4     1424  Hopeful
@@ -678,8 +678,8 @@ candidate_4     2032  Elected
 candidate_1     1740  Rejected
 candidate_3        0  Rejected
 candidate_2        0  Rejected
-",806,1424,575,967,1424.0,1146.0,1519.0,1107.0,0.0,1519.0,,,,,,1740,2032,0,0,2032.0,election_04-30-2020_21-08-24_4_0.0225.csv,,,,,
-candidate_1,3,"ROUND 1
+",806,1424,575,967,1424.0,1146.0,1519.0,1107.0,0.0,1519.0,0.0,0.0,0.0,0.0,0.0,1740,2032,0,0,2032.0,election_04-30-2020_21-08-24_4_0.0225.csv,0.0,0.0,0.0,0.0,0.0
+28,candidate_1,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1    10983  Hopeful
@@ -705,8 +705,8 @@ candidate_4    16104  Rejected
 candidate_2        0  Rejected
 candidate_3        0  Rejected
 6                  0  Rejected
-",10983,10983,8113,6113,7909.0,13263.0,13263.0,0.0,9840.0,10016.0,,,,,,17015,17015,0,0,16104.0,election_04-30-2020_20-59-59_4_0.0075.csv,,,,,
-candidate_1,3,"ROUND 1
+",10983,10983,8113,6113,7909.0,13263.0,13263.0,0.0,9840.0,10016.0,0.0,0.0,0.0,0.0,0.0,17015,17015,0,0,16104.0,election_04-30-2020_20-59-59_4_0.0075.csv,0.0,0.0,0.0,0.0,0.0
+29,candidate_1,3,"ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
 candidate_1    11653  Hopeful
@@ -732,4 +732,4 @@ candidate_2    20106  Rejected
 candidate_3        0  Rejected
 candidate_4        0  Rejected
 6                  0  Rejected
-",11653,11653,11650,11161,8418.0,15394.0,15394.0,13731.0,13758.0,0.0,,,,,,22777,22777,0,20106,0.0,election_05-02-2020_08-18-56_4cands_8noise.csv,,,,,
+",11653,11653,11650,11161,8418.0,15394.0,15394.0,13731.0,13758.0,0.0,0.0,0.0,0.0,0.0,0.0,22777,22777,0,20106,0.0,election_05-02-2020_08-18-56_4cands_8noise.csv,0.0,0.0,0.0,0.0,0.0
