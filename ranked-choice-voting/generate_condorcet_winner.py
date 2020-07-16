@@ -93,10 +93,10 @@ def parse_condorcet_results(condorcet_results):  # list
 def return_condorcet_winner(parsed_results):
     return sorted(parsed_results, key=lambda x: x[1], reverse=True)[0][0]
 
-def main():
+def condorcet_main(file_path_of_election):
     # candidates = list of Candidate() objects
     # ballots = list of Ballot() objects
-    df, cand_list, ballots = pyrankvote_main()
+    df, cand_list, ballots = pyrankvote_main(file_path_of_election)
     condorcet_results = condorcet_compile(cand_list, ballots)
     parsed_condorcet_results = parse_condorcet_results(condorcet_results)
     winner = return_condorcet_winner(parsed_condorcet_results)
@@ -111,6 +111,6 @@ def main():
 
 
 if __name__ == "__main__":
-    df = main()
+    df = condorcet_main('../data/election_07-16-2020_11-08-11_3cands_0.0033333333333333335noise.csv')
 
 
