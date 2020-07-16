@@ -114,13 +114,11 @@ def ballots_main(num_cands: int, amount_of_noise: int) -> None:
 
     # funcs:
     df = generate_ballots_main_function(num_cands, names_of_cands)
-
     matrix_shape = df.to_numpy().shape
     noise_matrix = add_noise(percent_noise=amount_of_noise, matrix_shape=matrix_shape)
     df = df * noise_matrix
 
     col_replacements = list(range(1, len(df.columns) + 1))
-
     for i in col_replacements:
         df = df.replace({i: df.columns[i - 1]})
 
@@ -128,8 +126,10 @@ def ballots_main(num_cands: int, amount_of_noise: int) -> None:
 
 
 
-if __name__ == "__main__":  # gonna have to do diff loops if want diff magnitudes of # candidates
-    for i in [3, 4, 5]:
-        for y in [1, 2, 10]:
-            ballots_main(i, y)
+if __name__ == "__main__":
+    for i in range(3):   # change to 25k when ready
 
+        # rand # cands btwn 3-8, with 3 being the most likely randomly-generated number:
+        cands = np.random.choice([3, 4, 5, 6, 7, 8], 1, p=[.6, .25, .1, .03, .015, 0.005])[0]
+        noise = np.random.randint(0, 35)
+        ballots_main(cands, noise)
