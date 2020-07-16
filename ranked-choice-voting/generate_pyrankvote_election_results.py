@@ -73,7 +73,7 @@ def rm_invalid_rows(df):
 
 def pyrankvote_main():
     # Read in election
-    df = pd.read_csv('./data/election_05-20-2020_08-09-28_3cands_16noise.csv')
+    df = pd.read_csv('../data/election_05-20-2020_08-09-28_3cands_16noise.csv')
 
     # Data cleaning & initializing necessary class Objects
     df = rename_index_col_to_ballot_id(df)

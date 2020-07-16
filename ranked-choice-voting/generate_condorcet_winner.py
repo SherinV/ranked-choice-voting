@@ -1,6 +1,5 @@
 from generate_pyrankvote_election_results import pyrankvote_main
 import pandas as pd
-import re
 
 
 def create_ballot_dict(ballots):
@@ -110,8 +109,6 @@ def main():
         df['spoiled'] = 'N'
     return df
 
-'dddddddd' \
-'ddddd'
 
 if __name__ == "__main__":
     df = main()
