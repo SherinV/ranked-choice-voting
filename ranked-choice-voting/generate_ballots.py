@@ -122,6 +122,8 @@ def ballots_main(num_cands: int, amount_of_noise: int) -> None:
     for i in col_replacements:
         df = df.replace({i: df.columns[i - 1]})
 
+    df['num_candidates'] = num_cands
+    df['noise'] = amount_of_noise
     df.to_csv(f'../data/election_{file_date}_{num_cands}cands_{amount_of_noise}noise.csv')
 
 
