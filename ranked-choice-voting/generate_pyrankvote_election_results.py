@@ -96,6 +96,6 @@ def pyrankvote_main(file_path_of_election):
     return df, cand_list, ballots
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # would read in concatenated csvs here
     pyrankvote_main('../data/election_07-16-2020_11-08-11_3cands_0.0033333333333333335noise.csv')
 
