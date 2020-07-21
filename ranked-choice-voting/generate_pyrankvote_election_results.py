@@ -71,9 +71,9 @@ def rm_invalid_rows(df):
     """
     return df[df['candidate_list'] != '0']
 
-def pyrankvote_main():
+def pyrankvote_main(file_path_of_election):
     # Read in election
-    df = pd.read_csv('./data/election_05-20-2020_08-09-28_3cands_16noise.csv')
+    df = pd.read_csv(file_path_of_election)
 
     # Data cleaning & initializing necessary class Objects
     df = rename_index_col_to_ballot_id(df)
@@ -96,6 +96,6 @@ def pyrankvote_main():
     return df, cand_list, ballots
 
 
-if __name__ == "__main__":
-    pyrankvote_main()
+if __name__ == "__main__":  # would read in concatenated csvs here
+    pyrankvote_main('../data/election_07-16-2020_11-08-11_3cands_0.0033333333333333335noise.csv')
 

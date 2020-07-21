@@ -78,7 +78,6 @@ def reconcile_num_ballots_with_len_df(num_total_ballots, df):
         df = df[:-diff]
         return df
 
-
 def add_noise(percent_noise, matrix_shape):
     """
     :param percent_noise:
@@ -101,29 +100,37 @@ def generate_ballots_main_function(num_cands, names_of_cands):
     df = reconcile_num_ballots_with_len_df(num_ballots_in_election, df)
     return df
 
+def ballots_main(num_cands: int, amount_of_noise: int) -> None:
+    """
+    Writes dataframe to csv.
+    Dataframe has cols "candidate_1, candidate_2, candidate_3"
+    """
 
-if __name__ == "__main__":
-    #### make func where user can select x number of y candidates for preference?
-    #### make sure to put in README that noise has be to > 1
-
-    # hyperparams:
-    num_cands = int(sys.argv[1])
+    # hyperparams
     names_of_cands = [f'candidate_{i}' for i in range(1, num_cands+1)]
-    amount_of_noise = (int(sys.argv[2])/100)/num_cands
+    amount_of_noise = (amount_of_noise/100)/num_cands
     date = datetime.now()
     file_date = date.strftime("%m-%d-%Y_%H-%M-%S")
 
     # funcs:
     df = generate_ballots_main_function(num_cands, names_of_cands)
-
     matrix_shape = df.to_numpy().shape
-    noise_matrix = add_noise(percent_noise=amount_of_noise, matrix_shape= matrix_shape)
+    noise_matrix = add_noise(percent_noise=amount_of_noise, matrix_shape=matrix_shape)
     df = df * noise_matrix
 
-    col_replacements = list(range(1, len(df.columns)+1))
-
+    col_replacements = list(range(1, len(df.columns) + 1))
     for i in col_replacements:
-        df = df.replace({i: df.columns[i-1]})
+        df = df.replace({i: df.columns[i - 1]})
 
-    df.to_csv(f'election_{file_date}_{sys.argv[1]}cands_{sys.argv[2]}noise.csv')
+    df['num_candidates'] = num_cands
+    df['noise'] = amount_of_noise
+    df.to_csv(f'../data/election_{file_date}_{num_cands}cands_{amount_of_noise}noise.csv')
 
+
+if __name__ == "__main__":
+    for i in range(20):   # change to 25k when ready
+
+        # rand # cands btwn 3-8, with 3 being the most likely randomly-generated number:
+        cands = np.random.choice([3, 4, 5, 6, 7, 8], 1, p=[.6, .25, .1, .03, .015, 0.005])[0]
+        noise = np.random.randint(0, 15)
+        ballots_main(cands, noise)
