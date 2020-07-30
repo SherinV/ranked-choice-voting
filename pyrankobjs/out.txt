@@ -1,27 +1,24 @@
 ROUND 1
 Candidate      Votes  Status
 -----------  -------  --------
-candidate_1    11653  Hopeful
-candidate_2    11650  Hopeful
-candidate_3    11161  Hopeful
-candidate_4     8418  Rejected
-6                  1  Rejected
+candidate_1    10974  Hopeful
+candidate_2     9650  Hopeful
+candidate_4     7419  Hopeful
+candidate_3     6240  Rejected
 
 ROUND 2
 Candidate      Votes  Status
 -----------  -------  --------
-candidate_1    15394  Hopeful
-candidate_2    13758  Hopeful
-candidate_3    13731  Rejected
-candidate_4        0  Rejected
-6                  0  Rejected
+candidate_1    13387  Hopeful
+candidate_2    11212  Hopeful
+candidate_4     9684  Rejected
+candidate_3        0  Rejected
 
 FINAL RESULT
 Candidate      Votes  Status
 -----------  -------  --------
-candidate_1    22777  Elected
-candidate_2    20106  Rejected
-candidate_3        0  Rejected
+candidate_1    19456  Elected
+candidate_2    14827  Rejected
 candidate_4        0  Rejected
-6                  0  Rejected
+candidate_3        0  Rejected
 
