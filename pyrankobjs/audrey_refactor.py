@@ -19,6 +19,14 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
         for file in glob.glob(glob_pattern):
             df = pd.read_csv(file, index_col=0)
             df['filename'] = os.path.basename(file)
+
+            # takes care of edge case where elections
+            # have unexplainable numbers instead of cands
+            filter_col = [col for col in df if col.startswith('candidate_')]
+            for col in filter_col:
+                idx = df[col].str.isnumeric() & (df[:][col] != '0')
+                df = df[~idx]
+
             yield df
 
     master_df = pd.concat(list(yielder(glob_pattern)))
@@ -26,7 +34,7 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
     return master_df
 
 
-def get_cands_into_single_cell(df: pd.DataFrame()) -> List[str]:
+def get_cands_into_single_cell(df: pd.DataFrame()) -> List:
     """
     Per election within master dataframe, take
     all candidates and put them in one cell, separating
@@ -34,23 +42,20 @@ def get_cands_into_single_cell(df: pd.DataFrame()) -> List[str]:
 
     :param df: master dataset
 
-    :return: list of concatenated candidates
-        per election within master dataset
-        that you can then use to set a new
-        column in master dataset called
-        "candidate_list"
+    :return: tk
     """
-    concat_cands = []
+    group_dfs = []
     for name, group in df.groupby('filename'):
+        print(name)
         group = group.dropna(axis=1, how='all')
         cand_cols = [col for col in group if col.startswith('candidate_')]
-        group[cand_cols] = group[cand_cols].astype('str')
         group['cands'] = group[cand_cols].agg(", ".join, axis=1)
-        concat_cands.extend(group['cands'].values)
-    return concat_cands
+        group_dfs.append(group)
+    return group_dfs
 
 
 if __name__ == "__main__":
     master_df = create_master_file_from_csvs()
     # master_df = pd.read_csv('./master_elections.csv')  # tmp
-    master_df['candidate_list'] = get_cands_into_single_cell(master_df)
+    dfs_with_cands_list = get_cands_into_single_cell(master_df)
+    master_df = pd.concat([df for df in dfs_with_cands_list])
