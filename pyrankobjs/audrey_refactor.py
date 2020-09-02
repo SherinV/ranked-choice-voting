@@ -1,6 +1,8 @@
 import os
 import glob
 from typing import List
+from typing import Dict
+from typing import Tuple
 import pandas as pd
 import pyrankvote
 from pyrankvote import Candidate, Ballot
@@ -77,13 +79,17 @@ def initialize_ballot_objs(df):
         ballot_objects.append(ballot)
     return ballot_objects
 
-
-def run_single_election(list_of_cand_objs: List, list_of_ballot_objs: List):
+def run_single_election(list_of_cand_objs: List, list_of_ballot_objs: List) -> pyrankvote.instant_runoff_voting:
     return pyrankvote.instant_runoff_voting(list_of_cand_objs,
                                             list_of_ballot_objs,
                                             pick_random_if_blank=True)
 
-def transform_single_election_metadata_to_dict(str):
+def transform_single_election_metadata_to_dict(str) -> Dict:
+    """
+    :param str:
+    :return:
+    """
+
     list_of_rounds = [i for i in str.split('\n') if i.startswith('R') or i.startswith('F')]
     split_into_rounds = str.split('\n\n')
     rounds = []
@@ -100,13 +106,11 @@ def transform_single_election_metadata_to_dict(str):
             if len(cand)>1:
                 cand_name = cand[0]
                 num_votes = cand[-2]
-                cand_with_votes = (cand_name, num_votes)
+                cand_with_votes = {cand_name: num_votes}
                 cand_votes.append(cand_with_votes)
         rounds.append((f'Round: {round+1}', cand_votes))
 
     return dict(rounds)
-
-
 
 def run_all_elections(df):
     elect_results = []
@@ -117,12 +121,11 @@ def run_all_elections(df):
         elect_results.append((elect_result.__str__(), elect_result))
     return elect_results
 
-
-# run election
-# get winner
-# rounds
-# spoiled/not
-# election dictionary: {'winner': [<Candidate('candidate_2')>], 'rounds': 2, 'election': <ElectionResults(2 rounds)>}
+def make_election_dicts(elect_results) -> List[Dict[str,List[Dict[str,str]]]]:
+    elect_dicts = []
+    for result in elect_results:
+        elect_dicts.append(transform_single_election_metadata_to_dict(result[0]))
+    return elect_dicts
 
 
 if __name__ == "__main__":
@@ -146,8 +149,7 @@ if __name__ == "__main__":
 
     all_election_metadata = run_all_elections(master_df)  # metadata + election result
 
-    # first election, metadata
-    test = transform_single_election_metadata_to_dict(all_election_metadata[0][0])
+    election_dicts = make_election_dicts(all_election_metadata)
 
 
     print('hi')
