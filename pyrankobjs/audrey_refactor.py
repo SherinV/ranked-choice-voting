@@ -170,11 +170,9 @@ def transform_name_of_pyrankvote_winner(pyrankvote_winner_obj):
     return pyrankvote_winner_obj[0].name
 
 
-
-
 if __name__ == "__main__":
-    # master_df = create_master_file_from_csvs()
-    master_df = pd.read_csv('./master_elections.csv')  # tmp for testing
+    master_df = create_master_file_from_csvs()
+    # master_df = pd.read_csv('./master_elections.csv')  # tmp for testing
     dfs_with_cands_list = get_cands_into_single_cell(master_df)
     master_df = pd.concat([df for df in dfs_with_cands_list])  # len = 105775
 
