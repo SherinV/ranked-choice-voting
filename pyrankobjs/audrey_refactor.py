@@ -113,12 +113,24 @@ def transform_single_election_metadata_to_dict(str) -> Dict:
     return dict(rounds)
 
 def run_all_elections(df):
+    """
+    :return:
+        List of election results. Each
+        result has the metadata of the election,
+        the pyrankvote election object, the
+        election winner (pyrankvote Candidate obj),
+        and the file name of the election
+    """
     elect_results = []
     for name, group in df.groupby('filename'):
         cands = group['candidate_list'].to_list()[0]
         ballots = group['ballots'].to_list()
         elect_result = run_single_election(cands, ballots)
-        elect_results.append((elect_result.__str__(), elect_result))
+        pyrankvote_winner = elect_result.get_winners()
+        elect_results.append((elect_result.__str__(),
+                              elect_result,
+                              pyrankvote_winner,
+                              name))
     return elect_results
 
 def make_election_dicts(elect_results) -> List[Dict[str,List[Dict[str,str]]]]:
@@ -126,6 +138,12 @@ def make_election_dicts(elect_results) -> List[Dict[str,List[Dict[str,str]]]]:
     for result in elect_results:
         elect_dicts.append(transform_single_election_metadata_to_dict(result[0]))
     return elect_dicts
+
+def make_winners_df(tuple_of_pyrankvote_election_obj_and_filename):
+    winner_filename_tuple = [(i[2], i[3]) for i in tuple_of_pyrankvote_election_obj_and_filename]
+    df = pd.DataFrame(winner_filename_tuple, columns=['winner', 'filename'])
+    return df
+
 
 
 if __name__ == "__main__":
@@ -151,5 +169,8 @@ if __name__ == "__main__":
 
     election_dicts = make_election_dicts(all_election_metadata)
 
+    winners_df = make_winners_df(all_election_metadata)
+
+    master_df = pd.merge(master_df, winners_df, on='filename')  # with pyrankvote winners
 
     print('hi')
