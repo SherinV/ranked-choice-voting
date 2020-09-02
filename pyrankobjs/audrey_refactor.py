@@ -2,8 +2,8 @@ import os
 import glob
 from typing import List
 from typing import Dict
-from typing import Tuple
 import pandas as pd
+from generate_condorcet_winner import *
 import pyrankvote
 from pyrankvote import Candidate, Ballot
 
@@ -141,14 +141,40 @@ def make_election_dicts(elect_results) -> List[Dict[str,List[Dict[str,str]]]]:
 
 def make_winners_df(tuple_of_pyrankvote_election_obj_and_filename):
     winner_filename_tuple = [(i[2], i[3]) for i in tuple_of_pyrankvote_election_obj_and_filename]
-    df = pd.DataFrame(winner_filename_tuple, columns=['winner', 'filename'])
+    df = pd.DataFrame(winner_filename_tuple, columns=['pyrankvote_winner', 'filename'])
     return df
+
+def get_condorcet_results(df):
+    groups = []
+    for name, group in df.groupby('filename'):
+        cand_list = group['candidate_list'].to_list()
+        ballots = group['ballots'].to_list()
+        condorcet_election = condorcet_compile(cand_list, ballots)
+        parsed_condorcet = parse_condorcet_results(condorcet_election)
+        condorcet_winner = return_condorcet_winner(parsed_condorcet)
+        group['condorcet_winner'] = condorcet_winner
+        groups.append(group)
+    return groups
+
+def indicate_spoiled(df):
+    if df['pyrankvote_winner'].all() != df['condorcet_winner'].all():
+        df['spoiled'] = 'Y'
+    else:
+        df['spoiled'] = 'N'
+    return df
+
+def transform_name_of_pyrankvote_winner(pyrankvote_winner_obj):
+    """
+    Extract candidate name from pyrankvote winner object
+    """
+    return pyrankvote_winner_obj[0].name
+
 
 
 
 if __name__ == "__main__":
     # master_df = create_master_file_from_csvs()
-    master_df = pd.read_csv('./master_elections.csv')  # tmp
+    master_df = pd.read_csv('./master_elections.csv')  # tmp for testing
     dfs_with_cands_list = get_cands_into_single_cell(master_df)
     master_df = pd.concat([df for df in dfs_with_cands_list])  # len = 105775
 
@@ -171,6 +197,16 @@ if __name__ == "__main__":
 
     winners_df = make_winners_df(all_election_metadata)
 
-    master_df = pd.merge(master_df, winners_df, on='filename')  # with pyrankvote winners
+    # with pyrankvote winners:
+    master_df = pd.merge(master_df, winners_df, on='filename')
 
-    print('hi')
+    condorcet_winners_df = get_condorcet_results(master_df)
+
+    # with condorcet winners
+    master_df = pd.concat([df for df in condorcet_winners_df])
+
+    # Got to pull name out of pyrankvote obj to work
+    # with spoiled/not-spoiled function below
+    master_df['pyrankvote_winner'] = master_df['pyrankvote_winner'].apply(transform_name_of_pyrankvote_winner)
+
+    master_df = indicate_spoiled(master_df)
