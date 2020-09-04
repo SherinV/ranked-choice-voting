@@ -189,9 +189,13 @@ if __name__ == "__main__":
     # initializing ballot objs
     master_df['ballots'] = initialize_ballot_objs(master_df)
 
-    all_election_metadata = run_all_elections(master_df)  # metadata + election result
+    all_election_metadata = run_all_elections(master_df)
+    # example of one item from all_election_metadata:
+    # 'ROUND 1\nCandidate      Votes  Status\n-----------  -------  --------\ncandidate_3    18581  Hopeful\ncandidate_2    13659  Hopeful\ncandidate_1     9433  Rejected\n\nFINAL RESULT\nCandidate      Votes  Status\n-----------  -------  --------\ncandidate_2    21423  Elected\ncandidate_3    20250  Rejected\ncandidate_1        0  Rejected\n', <ElectionResults(2 rounds)>, [<Candidate('candidate_2')>], 'election_07-21-2020_10-40-22_3cands_0.006666666666666667noise.csv')
 
     election_dicts = make_election_dicts(all_election_metadata)
+    # todo: write file names in dictionaries ^
+    # todo: export to csv file
 
     winners_df = make_winners_df(all_election_metadata)
 
@@ -208,3 +212,5 @@ if __name__ == "__main__":
     master_df['pyrankvote_winner'] = master_df['pyrankvote_winner'].apply(transform_name_of_pyrankvote_winner)
 
     master_df = indicate_spoiled(master_df)
+
+    print('hi')
