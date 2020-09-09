@@ -196,7 +196,7 @@ if __name__ == "__main__":
     # 'ROUND 1\nCandidate      Votes  Status\n-----------  -------  --------\ncandidate_3    18581  Hopeful\ncandidate_2    13659  Hopeful\ncandidate_1     9433  Rejected\n\nFINAL RESULT\nCandidate      Votes  Status\n-----------  -------  --------\ncandidate_2    21423  Elected\ncandidate_3    20250  Rejected\ncandidate_1        0  Rejected\n', <ElectionResults(2 rounds)>, [<Candidate('candidate_2')>], 'election_07-21-2020_10-40-22_3cands_0.006666666666666667noise.csv')
 
     election_dicts = make_election_dicts(all_election_metadata)
-    election_dicts.to_csv('./data/election_dict.csv', index=False)
+    pd.DataFrame(election_dicts).to_csv('../data/election_dict.csv', index=False)
 
     winners_df = make_winners_df(all_election_metadata)
 
