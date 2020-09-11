@@ -30,6 +30,8 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
             for col in filter_col:
                 idx = df[col].str.isnumeric() & (df[:][col] != '0')
                 df = df[~idx]
+            # if all rows contain '0', drop that row
+            df = df[~df.eq(df.iloc[:, 0], axis=0).all(1)]
 
             yield df
 
@@ -171,6 +173,14 @@ def transform_name_of_pyrankvote_winner(pyrankvote_winner_obj):
     """
     return pyrankvote_winner_obj[0].name
 
+def filter_out_cand_zeros(df):
+    indices_to_delete = []
+    for i,v in enumerate(df['candidate_list']):
+        if "0" in str(v[0]) and len(v) ==1:
+            indices_to_delete.append(i)
+    df = df.drop(index=indices_to_delete)
+    return indices_to_delete
+
 
 if __name__ == "__main__":
     master_df = create_master_file_from_csvs()
@@ -179,7 +189,8 @@ if __name__ == "__main__":
     master_df = pd.concat([df for df in dfs_with_cands_list])  # len = 105775
 
     # remove rows w/only 0s
-    master_df = master_df[master_df['candidate_list'] != '0']
+    # master_df = master_df[master_df['candidate_list'] != '0']
+    # master_df = filter_out_cand_zeros(master_df)
 
     # replacing 0s with blank space to work with pyrankvote
     master_df['candidate_list'] = master_df['candidate_list'].apply(
@@ -213,3 +224,5 @@ if __name__ == "__main__":
     master_df['pyrankvote_winner'] = master_df['pyrankvote_winner'].apply(transform_name_of_pyrankvote_winner)
 
     master_df = indicate_spoiled(master_df)
+
+    print('hi')
