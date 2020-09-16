@@ -27,11 +27,12 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
             # takes care of edge case where elections
             # have unexplainable numbers instead of cands
             filter_col = [col for col in df if col.startswith('candidate_')]
+            # if any of the rows have numbers other than 0 (partial votes are represented as 0's), remove those rows
             for col in filter_col:
                 idx = df[col].str.isnumeric() & (df[:][col] != '0')
                 df = df[~idx]
-            # if all rows contain '0', drop that row
-            df = df[~df.eq(df.iloc[:, 0], axis=0).all(1)]
+            # if any rows contain all '0's, drop that row
+            df = df[(df[filter_col]!='0').any(axis=1)].reset_index(drop=True)
 
             yield df
 
@@ -54,7 +55,7 @@ def get_cands_into_single_cell(df: pd.DataFrame()) -> List:
     for name, group in df.groupby('filename'):
         group = group.dropna(axis=1, how='all')
         cand_cols = [col for col in group if col.startswith('candidate_')]
-        group['candidate_list'] = group[cand_cols].agg(", ".join, axis=1)
+        group.loc[:,'candidate_list'] = group[cand_cols].agg(", ".join, axis=1)
         group_dfs.append(group)
     return group_dfs
 
@@ -151,12 +152,14 @@ def make_winners_df(tuple_of_pyrankvote_election_obj_and_filename):
 def get_condorcet_results(df):
     groups = []
     for name, group in df.groupby('filename'):
-        cand_list = group['candidate_list'].to_list()
+        # For review, this line was throwing an error, so made it same as #130 in run_all_elections() -
+        # not sure if this is the right thing to do though. What if the first in the list is a partial vote, will we miss a candidate?
+        cand_list = group['candidate_list'].to_list()[0]
         ballots = group['ballots'].to_list()
         condorcet_election = condorcet_compile(cand_list, ballots)
         parsed_condorcet = parse_condorcet_results(condorcet_election)
         condorcet_winner = return_condorcet_winner(parsed_condorcet)
-        group['condorcet_winner'] = condorcet_winner
+        group.loc[:,'condorcet_winner'] = condorcet_winner
         groups.append(group)
     return groups
 
