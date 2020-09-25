@@ -126,7 +126,8 @@ def run_all_elections(df):
     """
     elect_results = []
     for name, group in df.groupby('filename'):
-        cands = group['candidate_list'].to_list()[0]
+        cands = group['candidate_list'].to_list()
+        cands = max(cands, key=len)
         ballots = group['ballots'].to_list()
         elect_result = run_single_election(cands, ballots)
         pyrankvote_winner = elect_result.get_winners()
@@ -152,9 +153,8 @@ def make_winners_df(tuple_of_pyrankvote_election_obj_and_filename):
 def get_condorcet_results(df):
     groups = []
     for name, group in df.groupby('filename'):
-        # For review, this line was throwing an error, so made it same as #130 in run_all_elections() -
-        # not sure if this is the right thing to do though. What if the first in the list is a partial vote, will we miss a candidate?
-        cand_list = group['candidate_list'].to_list()[0]
+        cand_list = group['candidate_list'].to_list()
+        cand_list = max(cand_list, key=len)
         ballots = group['ballots'].to_list()
         condorcet_election = condorcet_compile(cand_list, ballots)
         parsed_condorcet = parse_condorcet_results(condorcet_election)
