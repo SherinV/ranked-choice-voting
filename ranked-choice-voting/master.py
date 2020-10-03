@@ -8,14 +8,12 @@ import pyrankvote
 from pyrankvote import Candidate, Ballot
 
 
-def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame():
+def create_master_file_from_csvs(glob_pattern='data/*.csv') -> pd.DataFrame():
     """
     Combine election-level csvs in data dir into
     single master dataset using a generator
-
     :param glob_pattern: pattern for recursive glob
         search files
-
     :return: master dataset as dataframe
     """
 
@@ -37,7 +35,7 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
             yield df
 
     master_df = pd.concat(list(yielder(glob_pattern)))
-    master_df.to_csv('./master_elections.csv', index=False)
+    master_df.to_csv('master_elections.csv', index=False)
     return master_df
 
 
@@ -46,9 +44,7 @@ def get_cands_into_single_cell(df: pd.DataFrame()) -> List:
     Per election within master dataframe, take
     all candidates and put them in one cell, separating
     them with commas
-
     :param df: master dataset
-
     :return: tk
     """
     group_dfs = []
@@ -126,7 +122,8 @@ def run_all_elections(df):
     """
     elect_results = []
     for name, group in df.groupby('filename'):
-        cands = group['candidate_list'].to_list()[0]
+        cands = group['candidate_list'].to_list()
+        cands = max(cands, key=len)
         ballots = group['ballots'].to_list()
         elect_result = run_single_election(cands, ballots)
         pyrankvote_winner = elect_result.get_winners()
@@ -152,9 +149,8 @@ def make_winners_df(tuple_of_pyrankvote_election_obj_and_filename):
 def get_condorcet_results(df):
     groups = []
     for name, group in df.groupby('filename'):
-        # For review, this line was throwing an error, so made it same as #130 in run_all_elections() -
-        # not sure if this is the right thing to do though. What if the first in the list is a partial vote, will we miss a candidate?
-        cand_list = group['candidate_list'].to_list()[0]
+        cand_list = group['candidate_list'].to_list()
+        cand_list = max(cand_list, key=len)
         ballots = group['ballots'].to_list()
         condorcet_election = condorcet_compile(cand_list, ballots)
         parsed_condorcet = parse_condorcet_results(condorcet_election)
@@ -209,10 +205,17 @@ if __name__ == "__main__":
     # example of one item from all_election_metadata:
     # 'ROUND 1\nCandidate      Votes  Status\n-----------  -------  --------\ncandidate_3    18581  Hopeful\ncandidate_2    13659  Hopeful\ncandidate_1     9433  Rejected\n\nFINAL RESULT\nCandidate      Votes  Status\n-----------  -------  --------\ncandidate_2    21423  Elected\ncandidate_3    20250  Rejected\ncandidate_1        0  Rejected\n', <ElectionResults(2 rounds)>, [<Candidate('candidate_2')>], 'election_07-21-2020_10-40-22_3cands_0.006666666666666667noise.csv')
 
+    
+#     election_dicts = make_election_dicts(all_election_metadata)
+#     pd.DataFrame(election_dicts).to_csv('../data/election_dict.csv', index=False)
+#     winners_df = make_winners_df(all_election_metadata)
+    
+    #creating and converting election dictionary to dataframe and merging winners df with it on filename:
     election_dicts = make_election_dicts(all_election_metadata)
-    pd.DataFrame(election_dicts).to_csv('../data/election_dict.csv', index=False)
-
+    elect_dict=pd.DataFrame(election_dicts)
     winners_df = make_winners_df(all_election_metadata)
+    final_elect_df= pd.merge(elect_dict, winners_df, left_on='Election', right_on='filename')
+    final_elect_df.to_csv('data/election_dict.csv', index=False) #saved fina dataframe a election_dict.csv
 
     # with pyrankvote winners:
     master_df = pd.merge(master_df, winners_df, on='filename')

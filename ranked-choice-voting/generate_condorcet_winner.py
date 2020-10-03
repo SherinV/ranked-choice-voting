@@ -110,7 +110,7 @@ def condorcet_main(file_path_of_election):
     return df
 
 
-if __name__ == "__main__":  # # would read in concatenated csvs here
-    df = condorcet_main('../data/election_07-16-2020_11-08-11_3cands_0.0033333333333333335noise.csv')
+if __name__ == "__main__":  # # would read in concatenated csvs here C:\Users\anxhe\Github\ranked-choice-voting\data\election_09-22-2020_23-00-57_3cands_0.02666666666666667noise.csv
+    df = condorcet_main('data/election_09-22-2020_23-00-57_3cands_0.02666666666666667noise.csv')
 
 
