@@ -228,4 +228,4 @@ if __name__ == "__main__":
 
     master_df = indicate_spoiled(master_df)
 
-    print('hi')
+    master_df.to_csv('master_dataset.csv', index=False)
