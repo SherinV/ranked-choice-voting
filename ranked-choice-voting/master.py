@@ -215,7 +215,7 @@ if __name__ == "__main__":
     elect_dict=pd.DataFrame(election_dicts)
     winners_df = make_winners_df(all_election_metadata)
     final_elect_df= pd.merge(elect_dict, winners_df, left_on='Election', right_on='filename')
-    final_elect_df.to_csv('../data/election_dict.csv', index=False) #saved fina dataframe a election_dict.csv
+    final_elect_df.to_csv('../data/election_dict.csv', index=False) #saved final dataframe a election_dict.csv
 
     # with pyrankvote winners:
     master_df = pd.merge(master_df, winners_df, on='filename')
