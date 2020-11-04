@@ -230,5 +230,3 @@ if __name__ == "__main__":
     master_df['pyrankvote_winner'] = master_df['pyrankvote_winner'].apply(transform_name_of_pyrankvote_winner)
 
     master_df = indicate_spoiled(master_df)
-
-    print('hi')
