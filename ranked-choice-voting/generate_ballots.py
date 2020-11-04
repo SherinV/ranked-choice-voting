@@ -128,7 +128,7 @@ def ballots_main(num_cands: int, amount_of_noise: int) -> None:
 
 
 if __name__ == "__main__":
-    for i in range(20):   # change to 25k when ready
+    for i in range(400):   # change to 25k when ready
 
         # rand # cands btwn 3-8, with 3 being the most likely randomly-generated number:
         cands = np.random.choice([3, 4, 5, 6, 7, 8], 1, p=[.6, .25, .1, .03, .015, 0.005])[0]
