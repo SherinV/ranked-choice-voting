@@ -73,8 +73,8 @@ def feature_extraction_main():
     df=generate_roundwinnervotes(df,num_rounds)
     num_rounds = "-"+"{}".format(num_rounds) #MAIN
     df['total_votes_allrounds']= df.iloc[:, int(num_rounds):].astype(int).sum(axis=1) #MAIN
-    df.to_csv("master_data_with_features.csv")
-    
+    # df.to_csv("master_data_with_features.csv")
+    return df
     
 if __name__ == "__main__":
     feature_extraction_main()
