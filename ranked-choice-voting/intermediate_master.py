@@ -181,7 +181,7 @@ def filter_out_cand_zeros(df):
     return indices_to_delete
 
 
-if __name__ == "__main__":
+def create_intermediate_master_file():
     master_df = create_master_file_from_csvs()
     # master_df = pd.read_csv('./master_elections.csv')  # tmp for testing
     dfs_with_cands_list = get_cands_into_single_cell(master_df)
@@ -205,17 +205,16 @@ if __name__ == "__main__":
     # example of one item from all_election_metadata:
     # 'ROUND 1\nCandidate      Votes  Status\n-----------  -------  --------\ncandidate_3    18581  Hopeful\ncandidate_2    13659  Hopeful\ncandidate_1     9433  Rejected\n\nFINAL RESULT\nCandidate      Votes  Status\n-----------  -------  --------\ncandidate_2    21423  Elected\ncandidate_3    20250  Rejected\ncandidate_1        0  Rejected\n', <ElectionResults(2 rounds)>, [<Candidate('candidate_2')>], 'election_07-21-2020_10-40-22_3cands_0.006666666666666667noise.csv')
 
-    
-#     election_dicts = make_election_dicts(all_election_metadata)
-#     pd.DataFrame(election_dicts).to_csv('../data/election_dict.csv', index=False)
-#     winners_df = make_winners_df(all_election_metadata)
-    
-    #creating and converting election dictionary to dataframe and merging winners df with it on filename:
+    #     election_dicts = make_election_dicts(all_election_metadata)
+    #     pd.DataFrame(election_dicts).to_csv('../data/election_dict.csv', index=False)
+    #     winners_df = make_winners_df(all_election_metadata)
+
+    # creating and converting election dictionary to dataframe and merging winners df with it on filename:
     election_dicts = make_election_dicts(all_election_metadata)
-    elect_dict=pd.DataFrame(election_dicts)
+    elect_dict = pd.DataFrame(election_dicts)
     winners_df = make_winners_df(all_election_metadata)
-    final_elect_df= pd.merge(elect_dict, winners_df, left_on='Election', right_on='filename')
-    final_elect_df.to_csv('../data/election_dict.csv', index=False) #saved final dataframe a election_dict.csv
+    final_elect_df = pd.merge(elect_dict, winners_df, left_on='Election', right_on='filename')
+    final_elect_df.to_csv('../data/election_dict.csv', index=False)  # saved final dataframe a election_dict.csv
 
     # with pyrankvote winners:
     master_df = pd.merge(master_df, winners_df, on='filename')
@@ -230,3 +229,9 @@ if __name__ == "__main__":
     master_df['pyrankvote_winner'] = master_df['pyrankvote_winner'].apply(transform_name_of_pyrankvote_winner)
 
     master_df = indicate_spoiled(master_df)
+
+    return master_df
+
+
+if __name__ == "__main__":
+    create_intermediate_master_file()

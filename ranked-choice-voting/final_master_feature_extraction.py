@@ -65,7 +65,7 @@ def generate_roundwinnervotes(df, num_rounds):
     return df
 
 
-def main():
+def feature_extraction_main():
     df=load_data()
     df=clean_df(df)
     df['pyrankvote_winner'] = df['pyrankvote_winner'].apply(lambda x: x[13:-4])
@@ -77,5 +77,4 @@ def main():
     
     
 if __name__ == "__main__":
-    main()
-    print('hi')
+    feature_extraction_main()
