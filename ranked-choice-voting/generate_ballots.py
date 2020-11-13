@@ -100,7 +100,7 @@ def generate_ballots_main_function(num_cands, names_of_cands):
     df = reconcile_num_ballots_with_len_df(num_ballots_in_election, df)
     return df
 
-def ballots_main(num_cands: int, amount_of_noise: int) -> None:
+def generate_ballots_2(num_cands: int, amount_of_noise: int) -> None:
     """
     Writes dataframe to csv.
     Dataframe has cols "candidate_1, candidate_2, candidate_3"
@@ -127,10 +127,15 @@ def ballots_main(num_cands: int, amount_of_noise: int) -> None:
     df.to_csv(f'../data/election_{file_date}_{num_cands}cands_{amount_of_noise}noise.csv')
 
 
-if __name__ == "__main__":
-    for i in range(20):   # change to 25k when ready
+def ballots_main(num_elections_to_generate):
+    for i in range(num_elections_to_generate):  # change to 25k when ready
 
         # rand # cands btwn 3-8, with 3 being the most likely randomly-generated number:
         cands = np.random.choice([3, 4, 5, 6, 7, 8], 1, p=[.6, .25, .1, .03, .015, 0.005])[0]
         noise = np.random.randint(0, 15)
-        ballots_main(cands, noise)
+        generate_ballots_2(cands, noise)
+
+
+if __name__ == "__main__":
+   ballots_main(sys.argv[1])
+   #todo: rename functions in this file
