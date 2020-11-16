@@ -6,11 +6,20 @@ import pandas as pd
 
 
 def load_data():
+    '''
+   INPUT: NONE
+   OUTPUT: df
+    '''
     df = pd.read_csv("../data/election_dict.csv")
     return df
 
 
-def clean_df(df):
+def clean_df(df): # Function to clean df, specifically converting column of dictionary strings into a column of dictionaries 
+    '''
+    INPUT: df
+    OUTPUT: cleaned df
+    '''
+    
     cols = [col for col in df if col.startswith('Round:')] #MAIN
     for col in cols:
         df[col] =  df[col].apply(lambda x: x if pd.isnull(x) else x.strip('[]'))
@@ -49,6 +58,7 @@ def generate_roundwinnervotes(df, num_rounds):
     '''
     INPUT: df
            num_rounds - from get_number_rounds(df) function max round in data.
+    OUTPUT: df
     '''
     
     for i in range(1, num_rounds + 1):
@@ -66,6 +76,11 @@ def generate_roundwinnervotes(df, num_rounds):
 
 
 def feature_extraction_main():
+    '''
+    INPUT: NONE
+    OUTPUT: df
+    '''
+    
     df=load_data()
     df=clean_df(df)
     df['pyrankvote_winner'] = df['pyrankvote_winner'].apply(lambda x: x[13:-4])
