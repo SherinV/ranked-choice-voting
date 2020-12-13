@@ -36,7 +36,7 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
             yield df
 
     master_df = pd.concat(list(yielder(glob_pattern)))
-    master_df.to_csv('master_elections.csv', index=False)
+    # master_df.to_csv('master_elections.csv', index=False)
     return master_df
 
 
@@ -230,22 +230,10 @@ def create_intermediate_master_file():
 
     master_df = indicate_spoiled(master_df)
 
-    master_df.to_csv('master_dataset.csv', index=False)
+    # master_df.to_csv('master_dataset.csv', index=False)
 
     return master_df
 
-# def the_job(some_queue):
-#     for item in something:
-#         result = process(item)
-#         some_queue.put(result)
-#
-# def Writer(dest_filename, some_queue, some_stop_token):
-#     with open(dest_filename, 'w') as dest_file:
-#         while True:
-#             line = some_queue.get()
-#             if line == some_stop_token:
-#                 return
-#             dest_file.write(line)
 
 if __name__ == "__main__":
     create_intermediate_master_file()

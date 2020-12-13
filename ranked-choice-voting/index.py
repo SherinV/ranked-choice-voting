@@ -5,6 +5,7 @@ from final_master_feature_extraction import feature_extraction_main
 from multiprocessing import Pool
 import multiprocessing
 import pandas as pd
+import numpy as np
 
 def create_dataset_for_modeling(num_ballots_to_generate):
     ballots_main(num_ballots_to_generate)
@@ -17,6 +18,20 @@ def create_dataset_for_modeling(num_ballots_to_generate):
                          sort=False)
 
     master_df = master_df.drop_duplicates()
+
+    # Drop all cols with "Rounds" info:
+    to_filter_out = [col for col in master_df if not col.startswith('Round')]
+    master_df  = master_df[to_filter_out]
+
+    # Drop other cols we don't :
+    master_df = master_df.drop(columns=['Election', 'filename',
+                                        'pyrankvote_winner_x',
+                                        'condorcet_winner',
+                                        'pyrankvote_winner_y'])
+
+    # Vectorizing dependent var:
+    master_df['spoiled'] = np.where(master_df['spoiled'] == 'Y', 0, 1)  # 0 = yes, 1 = no
+
     master_df.to_csv('final_master.csv', index=False)
 
 
