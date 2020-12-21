@@ -10,7 +10,7 @@ import numpy as np
 def create_dataset_for_modeling(num_ballots_to_generate):
     ballots_main(num_ballots_to_generate)
     ballot_level_features_df = create_intermediate_master_file()  # audrey's script
-    election_level_features_df = feature_extraction_main()  # anxhela & sherin script
+    election_level_features_df = feature_extraction_main()  # anxhela's script
 
     master_df = pd.merge(election_level_features_df,
                          ballot_level_features_df[['num_candidates', 'noise', 'pyrankvote_winner', 'condorcet_winner', 'spoiled', 'filename']],
