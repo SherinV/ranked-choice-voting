@@ -32,7 +32,11 @@ def create_dataset_for_modeling(num_ballots_to_generate):
     # Vectorizing dependent var:
     master_df['spoiled'] = np.where(master_df['spoiled'] == 'Y', 0, 1)  # 0 = yes, 1 = no
 
-    master_df.to_csv('final_master.csv', index=False)
+    print(master_df.spoiled.unique())
+
+    master_df.to_csv('final_master1222021.csv', index=False)
+
+    
 
 
 if __name__ == "__main__":
@@ -44,8 +48,11 @@ if __name__ == "__main__":
     # pool = Pool(processes=total_threads)
     # res = pool.map_async(create_dataset_for_modeling, [num_ballots_to_generate])
     # pool.close()
-    # pool.join()
-
+    # pool.join()0
     # Pooling type #2:
     # with Pool(5) as p:
-    #     print(p.map(create_dataset_for_modeling, [3, 4]))
+    # print(p.map(create_dataset_for_modeling, [3, 4]))
+
+
+    # TODO: REPLACE GENERATED BALLOTS DATA WITH Burlington Data
+    

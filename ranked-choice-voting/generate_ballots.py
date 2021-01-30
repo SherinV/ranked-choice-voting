@@ -132,7 +132,7 @@ def ballots_main(num_elections_to_generate):
 
         # rand # cands btwn 3-8, with 3 being the most likely randomly-generated number:
         cands = np.random.choice([3, 4, 5, 6, 7, 8], 1, p=[.6, .25, .1, .03, .015, 0.005])[0]
-        noise = np.random.randint(0, 15)
+        noise = np.random.randint(50, 100) #(0,15)
         generate_ballots_2(cands, noise)
 
 
