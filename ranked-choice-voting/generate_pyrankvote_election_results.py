@@ -126,5 +126,5 @@ def pyrankvote_main(file_path_of_election):
 
 
 if __name__ == "__main__":  # would read in concatenated csvs here
-    boss_kiss_wins = pyrankvote_main('us_vt_btv_2009.csv')
+    bob_kiss_wins = pyrankvote_main('us_vt_btv_2009.csv')
     print('hi')
