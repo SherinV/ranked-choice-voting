@@ -160,12 +160,16 @@ def get_condorcet_results(df):
         groups.append(group)
     return groups
 
-def indicate_spoiled(df):
-    if df['pyrankvote_winner'].all() != df['condorcet_winner'].all():
-        df['spoiled'] = 'Y'
-    else:
-        df['spoiled'] = 'N'
-    return df
+def indicate_spoiled(condorcet_df):
+    group_dfs = []
+    for name, df in condorcet_df.groupby('filename'):
+        if df['pyrankvote_winner'].all() != df['condorcet_winner'].all():
+            df.loc[:, 'spoiled'] = 'Y'
+        else:
+            df.loc[:, 'spoiled'] = 'N'
+        group_dfs.append(df)
+    master_df = pd.concat([df for df in group_dfs])
+    return master_df
 
 def transform_name_of_pyrankvote_winner(pyrankvote_winner_obj):
     """
