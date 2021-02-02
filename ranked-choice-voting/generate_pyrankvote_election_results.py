@@ -1,6 +1,8 @@
 import pyrankvote
 import pandas as pd
+import numpy as np
 from pyrankvote import Candidate, Ballot
+from pyrankvote.models import DuplicateCandidatesError
 
 
 def rename_index_col_to_ballot_id(df):
@@ -49,10 +51,20 @@ def initialize_ballot_objs(df):
     :return:
     """
     ballot_objects = []
+
+    indices_to_drop = []
+
     for index, value in enumerate(df['candidate_list']):
-        ballot = Ballot(ranked_candidates=value)
-        ballot_objects.append(ballot)
-    return ballot_objects
+        try:
+            ballot = Ballot(ranked_candidates=value)
+            ballot_objects.append(ballot)
+        except DuplicateCandidatesError:
+            print(f'duplicated candidate on ballot {index}')
+            indices_to_drop.append(index)
+
+
+    return ballot_objects, indices_to_drop
+
 
 def run_election(list_of_cand_objs, election_df):
     """
@@ -72,22 +84,39 @@ def rm_invalid_rows(df):
     return df[df['candidate_list'] != '0']
 
 def pyrankvote_main(file_path_of_election):
-    # Read in election
-    df = pd.read_csv(file_path_of_election)
 
-    # Data cleaning & initializing necessary class Objects
-    df = rename_index_col_to_ballot_id(df)
-    df = get_cands_into_single_cell(df)
-    df['candidate_list'] = df['candidate_list'].apply(lambda x: x.replace('0, ', '').replace(', 0', ''))
-    df = rm_invalid_rows(df)
-    df['candidate_list'] = df['candidate_list'].apply(lambda x: initialize_cand_objs(x))
-    ballots = initialize_ballot_objs(df)
-    df['ballots'] = ballots
-    cand_list = get_cand_list(df)
+    df = pd.read_csv('us_vt_btv_2009.csv')
+
+    df1 = df.pivot(index='ballot_id', columns='rank', values='choice').rename_axis(None, axis=1).reset_index()
+
+    # Getting rid of under/over votes
+    mask = np.column_stack([df1[col].str.contains(r"\$", na=False) for col in df1])
+    indices_to_drop = df1.loc[mask.any(axis=1)].index
+    df1 = df1.drop(index=indices_to_drop)
+
+    # Getting rid of write-ins
+    mask = np.column_stack([df1[col].str.contains(r"Write-in", na=False) for col in df1])
+    indices_to_drop = df1.loc[mask.any(axis=1)].index
+    df1 = df1.drop(index=indices_to_drop)
+
+    # Making Candidates
+    df1 = df1.replace(np.nan, '0')
+    df1 = get_cands_into_single_cell(df1)
+    df1['candidate_list'] = df1['candidate_list'].apply(lambda x: x.replace('0, ', '').replace(', 0', ''))
+    df1 = rm_invalid_rows(df1)
+    df1['candidate_list'] = df1['candidate_list'].apply(lambda x: initialize_cand_objs(x))
+
+    # Making Ballots
+    ballots, indices_to_drop = initialize_ballot_objs(df1)  # found dupes
+
+    df1 = df1.drop(index=indices_to_drop)
+
+    df1['ballots'] = ballots
+    cand_list = get_cand_list(df1)
     cand_list = initialize_cand_objs(cand_list)
 
     # Simulate election
-    election = run_election(cand_list, df)
+    election = run_election(cand_list, df1)
 
     # Add election winners to dataframe
     pyrankvote_winner = election.get_winners()[0].name  # Extracting single string rep'ing election winner
@@ -97,5 +126,5 @@ def pyrankvote_main(file_path_of_election):
 
 
 if __name__ == "__main__":  # would read in concatenated csvs here
-    pyrankvote_main('../data/election_07-16-2020_11-08-11_3cands_0.0033333333333333335noise.csv')
-
+    boss_kiss_wins = pyrankvote_main('../data/election_07-16-2020_11-08-11_3cands_0.0033333333333333335noise.csv')
+    print('hi')
