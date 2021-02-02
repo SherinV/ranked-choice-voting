@@ -9,7 +9,7 @@ import pyrankvote
 from pyrankvote import Candidate, Ballot
 
 
-def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame():
+def create_master_file_from_csvs(glob_pattern=r'C:\Users\anxhe\Documents\github\ranked-choice-voting\data\*.csv') -> pd.DataFrame():
     """
     Combine election-level csvs in data dir into
     single master dataset using a generator
@@ -21,6 +21,7 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
     def yielder(glob_pattern):
         for file in glob.glob(glob_pattern):
             df = pd.read_csv(file, index_col=0)
+            print(df.shape)
             df['filename'] = os.path.basename(file)
 
             # takes care of edge case where elections
@@ -38,7 +39,6 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
     master_df = pd.concat(list(yielder(glob_pattern)))
     # master_df.to_csv('master_elections.csv', index=False)
     return master_df
-
 
 def get_cands_into_single_cell(df: pd.DataFrame()) -> List:
     """
@@ -213,7 +213,7 @@ def create_intermediate_master_file():
 
 
     final_elect_df = pd.merge(elect_dict, winners_df, left_on='Election', right_on='filename')
-    final_elect_df.to_csv('../data/election_dict.csv', index=False)  # writes a file
+    final_elect_df.to_csv(r"C:\Users\anxhe\Documents\github\ranked-choice-voting\data\election_dict.csv")  # writes a file
 
 
     # with pyrankvote winners:
@@ -221,8 +221,10 @@ def create_intermediate_master_file():
 
     condorcet_winners_df = get_condorcet_results(master_df)
 
+
     # with condorcet winners
     master_df = pd.concat([df for df in condorcet_winners_df])
+    
 
     # Got to pull name out of pyrankvote obj to work
     # with spoiled/not-spoiled function below
