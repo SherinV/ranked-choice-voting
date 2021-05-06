@@ -7,6 +7,7 @@ import boto3
 import botocore
 import pandas as pd
 import json
+import streamlit as st
 
 
 def open_s3_connections() -> boto3.client("s3"):
@@ -21,8 +22,8 @@ def open_s3_connections() -> boto3.client("s3"):
     )
     client = boto3.client(
         "s3",
-        aws_access_key_id=os.environ["AWS_ACCES S_KEY_ID"],
-        aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+        aws_access_key_id=st.secrets["AWS_ACCESS_KEY_ID"],
+        aws_secret_access_key=st.secrets["AWS_SECRET_ACCESS_KEY"],
         endpoint_url="https://s3.us-east-1.amazonaws.com/",
         config=config,
     )
