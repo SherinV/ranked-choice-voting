@@ -39,6 +39,8 @@ if __name__ == "__main__":
     num_ballots_to_generate = int(sys.argv[1])
     create_dataset_for_modeling(num_ballots_to_generate)
 
+    # TODO: automatically make data directory
+
     # Pooling type #1 (seems to take longer than #2):
     # total_threads = 5
     # pool = Pool(processes=total_threads)

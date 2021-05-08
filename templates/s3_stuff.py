@@ -44,7 +44,6 @@ def download_and_load_pickled_model_from_s3(
 ):
     """
     Download pickled model from S3 and un-pickle it.
-    :return: LDA multicore model
     """
     obj = s3_connection.get_object(Bucket=bucket, Key=file_name)["Body"].read()
     obj = BytesIO(obj)
