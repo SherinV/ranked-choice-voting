@@ -38,4 +38,4 @@ if __name__ == "__main__":
     if not os.path.isdir('../data/'):
         os.mkdir('../data/')
         num_ballots_to_generate = int(sys.argv[1])
-        create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])
+        create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])  # user_input doesn't work w/num_ballots_to_generate...)
