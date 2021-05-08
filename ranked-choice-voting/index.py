@@ -1,14 +1,13 @@
 import sys
+import os
 from generate_ballots import ballots_main
 from intermediate_master import create_intermediate_master_file
 from final_master_feature_extraction import feature_extraction_main
-from multiprocessing import Pool
-import multiprocessing
 import pandas as pd
 import numpy as np
 
-def create_dataset_for_modeling(num_ballots_to_generate):
-    ballots_main(num_ballots_to_generate)
+def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
+    ballots_main(num_ballots_to_generate, user_input)
     ballot_level_features_df = create_intermediate_master_file()  # audrey's script
     election_level_features_df = feature_extraction_main()  # anxhela & sherin script
 
@@ -36,18 +35,7 @@ def create_dataset_for_modeling(num_ballots_to_generate):
 
 
 if __name__ == "__main__":
-    num_ballots_to_generate = int(sys.argv[1])
-    create_dataset_for_modeling(num_ballots_to_generate)
-
-    # TODO: automatically make data directory
-
-    # Pooling type #1 (seems to take longer than #2):
-    # total_threads = 5
-    # pool = Pool(processes=total_threads)
-    # res = pool.map_async(create_dataset_for_modeling, [num_ballots_to_generate])
-    # pool.close()
-    # pool.join()
-
-    # Pooling type #2:
-    # with Pool(5) as p:
-    #     print(p.map(create_dataset_for_modeling, [3, 4]))
+    if not os.path.isdir('../data/'):
+        os.mkdir('../data/')
+        num_ballots_to_generate = int(sys.argv[1])
+        create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])
