@@ -20,12 +20,12 @@ if next:
     else:
         st.subheader("Range of candidates:")
         # TODO: figure out way to prevent same number being the min and max on the slider below
-        num_cands = st.slider('Select a range representing the number of candidates elections in your dataset can have',
+        num_cands = st.slider('Select a range representing the number of candidates each election in your dataset can have',
                               3, 8, (3, 8))
         next_3 = st.checkbox("Check to continue", key='3')
         if next_3:
             st.subheader("Range of noise:")
-            amt_noise = st.slider('Select a range representing the amount of noise elections in your dataset can have',
+            amt_noise = st.slider('Select a range representing the amount of noise each election in your dataset can have',
                                   0.0, 15.0, (0.0, 15.0))
 
 
