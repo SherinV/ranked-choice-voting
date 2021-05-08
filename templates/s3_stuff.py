@@ -1,4 +1,3 @@
-import os
 import pickle
 from typing import List
 from io import StringIO
@@ -9,7 +8,7 @@ import pandas as pd
 import json
 import streamlit as st
 
-
+@st.cache
 def open_s3_connections() -> boto3.client("s3"):
     """
     :return: a client object from boto3, i.e. connection to S3
@@ -38,7 +37,7 @@ def list_contents_of_bucket(
     """
     return s3_connection.list_objects(Bucket=bucket)["Contents"]
 
-
+@st.cache
 def download_and_load_pickled_model_from_s3(
     s3_connection: boto3.client("s3"), file_name: str, bucket="rcvproject"
 ):
