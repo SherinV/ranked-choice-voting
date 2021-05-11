@@ -1,4 +1,4 @@
-from generate_pyrankvote_election_results import pyrankvote_main
+from ranked_choice_voting.generate_pyrankvote_election_results import pyrankvote_main
 import pandas as pd
 
 
@@ -110,7 +110,7 @@ def condorcet_main(file_path_of_election):
     return df
 
 
-if __name__ == "__main__":  # # would read in concatenated csvs here C:\Users\anxhe\Github\ranked-choice-voting\data\election_09-22-2020_23-00-57_3cands_0.02666666666666667noise.csv
+if __name__ == "__main__":  # # would read in concatenated csvs here C:\Users\anxhe\Github\ranked_choice_voting\data\election_09-22-2020_23-00-57_3cands_0.02666666666666667noise.csv
     df = condorcet_main('data/election_09-22-2020_23-00-57_3cands_0.02666666666666667noise.csv')
 
 

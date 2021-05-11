@@ -1,10 +1,11 @@
 import sys
 import os
-from generate_ballots import ballots_main
-from intermediate_master import create_intermediate_master_file
-from final_master_feature_extraction import feature_extraction_main
+from ranked_choice_voting.generate_ballots import ballots_main
+from ranked_choice_voting.intermediate_master import create_intermediate_master_file
+from ranked_choice_voting.final_master_feature_extraction import feature_extraction_main
 import pandas as pd
 import numpy as np
+
 
 def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
     ballots_main(num_ballots_to_generate, user_input)
@@ -20,7 +21,7 @@ def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
 
     # Drop all cols with "Rounds" info:
     to_filter_out = [col for col in master_df if not col.startswith('Round')]
-    master_df  = master_df[to_filter_out]
+    master_df = master_df[to_filter_out]
 
     # Drop other cols we don't :
     master_df = master_df.drop(columns=['Election', 'filename',
@@ -34,8 +35,12 @@ def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
     master_df.to_csv('master.csv', index=False)
 
 
+
 if __name__ == "__main__":
     if not os.path.isdir('../data/'):
         os.mkdir('../data/')
         num_ballots_to_generate = int(sys.argv[1])
-        create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])  # user_input doesn't work w/num_ballots_to_generate...)
+        create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])
+    else:
+        num_ballots_to_generate = int(sys.argv[1])
+        create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])

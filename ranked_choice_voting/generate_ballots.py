@@ -124,21 +124,33 @@ def generate_ballots_2(num_cands: int, amount_of_noise: int) -> None:
 
     df['num_candidates'] = num_cands
     df['noise'] = amount_of_noise
-    df.to_csv(f'../data/election_{file_date}_{num_cands}cands_{amount_of_noise}noise.csv')
+    df.to_csv(f'data/election_{file_date}_{num_cands}cands_{amount_of_noise}noise.csv')
+    return df
 
 
 def ballots_main(num_elections_to_generate, user_input=None):
     for i in range(num_elections_to_generate):  # change to 25k when ready
         if user_input:
-            cands = int(user_input[0])
-            noise = int(user_input[1])
-            generate_ballots_2(cands, noise)
+            if num_elections_to_generate == 1:
+                cands = int(user_input[0])
+                noise = int(user_input[1])
+                generate_ballots_2(cands, noise)
+            else:
+                cands_tuple = user_input[0]
+                cand_num_possibilities = np.arange(cands_tuple[0], cands_tuple[-1]+1)
+                ballot_magnitudes = sorted(np.random.dirichlet(cand_num_possibilities, size=1)[0], reverse=True)  # list of length n, where each item decreases in magnitude & items sum to 1
+                cands = np.random.choice(cand_num_possibilities, 1, p=ballot_magnitudes)[0]
+
+                noise_tuple = user_input[1]
+                noise = np.random.randint(noise_tuple[0], noise_tuple[1])
+                generate_ballots_2(cands, noise)
         else:
             cands = np.random.choice([3, 4, 5, 6, 7, 8], 1, p=[.6, .25, .1, .03, .015, 0.005])[0]
             noise = np.random.randint(0, 15)
             generate_ballots_2(cands, noise)
 
 
+
 if __name__ == "__main__":
-   ballots_main(int(sys.argv[1]), user_input=[3, 2])
+   ballots_main(int(sys.argv[1]), user_input=[(3, 6), (1, 3)])
    #todo: rename functions in this file

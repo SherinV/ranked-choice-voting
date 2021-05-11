@@ -1,7 +1,4 @@
 import ast
-import json
-import operator
-import numpy as np
 import pandas as pd
 
 
@@ -10,7 +7,7 @@ def load_data():
    INPUT: NONE
    OUTPUT: df
     '''
-    df = pd.read_csv("../data/election_dict.csv")
+    df = pd.read_csv("data/election_dict.csv")
     return df
 
 
