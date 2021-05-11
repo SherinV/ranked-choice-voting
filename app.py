@@ -17,7 +17,9 @@ if cont:
         num_cands = st.select_slider('Select the number of candidates for your election', options=[3, 4, 5, 6, 7, 8], value=3)
         cont = st.checkbox("Check to continue", key='2')
         if cont:
-            amt_noise = st.select_slider('Select the amount of noise in your election', options=list(np.arange(0, 16, .5)), value=0.0)
+            amt_noise = st.select_slider('Select the amount of noise in your election. (Integers you choose get turned'
+                                         ' into percentages with orders of magnitude proportional to their '
+                                         'original values.)', options=list(np.arange(0, 16, .5)), value=0.0)
 
             cont = st.checkbox("Check to create your election", key='3')  # TODO: make progress bar
             if cont:
@@ -33,7 +35,8 @@ if cont:
         if cont:
             st.subheader("Range of noise:")
             amt_noise = st.slider('Select a range representing the amount of noise each election in your dataset '
-                                  'can have. Range is inclusive.',
+                                  'can have. Range is inclusive. (Integers you choose get turned into percentages with'
+                                  ' orders of magnitude proportional to their original values.)',
                                   0, 15, (0, 15))
             cont = st.checkbox("Check to create your election", key='5')  # TODO: make progress bar
             if cont:
