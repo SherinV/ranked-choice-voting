@@ -8,6 +8,11 @@ import numpy as np
 
 
 def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
+    if not os.path.isdir('data/'):
+        os.mkdir('data/')
+    else:
+        pass
+
     ballots_main(num_ballots_to_generate, user_input)
     ballot_level_features_df = create_intermediate_master_file()  # audrey's script
     election_level_features_df = feature_extraction_main()  # anxhela & sherin script
@@ -37,8 +42,8 @@ def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
 
 
 if __name__ == "__main__":
-    if not os.path.isdir('../data/'):
-        os.mkdir('../data/')
+    if not os.path.isdir('data/'):
+        os.mkdir('data/')
         num_ballots_to_generate = int(sys.argv[1])
         create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])
     else:
