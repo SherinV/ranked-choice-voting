@@ -12,9 +12,9 @@ def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
     if not os.path.isdir('data/'):
         os.mkdir('data/')
     else:
-        dir = 'data/'
-        for files in os.listdir(dir):
-            path = os.path.join(dir, files)
+        directory = 'data/'
+        for files in os.listdir(directory ):
+            path = os.path.join(directory , files)
             try:
                 shutil.rmtree(path)
             except OSError:
@@ -51,8 +51,8 @@ def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
 if __name__ == "__main__":
     if not os.path.isdir('data/'):
         os.mkdir('data/')
-        num_ballots_to_generate = int(sys.argv[1])
-        create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])
+        num_ballots = int(sys.argv[1])
+        create_dataset_for_modeling(num_ballots, user_input=[3, 2])
     else:
-        num_ballots_to_generate = int(sys.argv[1])
-        create_dataset_for_modeling(num_ballots_to_generate, user_input=[3, 2])
+        num_ballots = int(sys.argv[1])
+        create_dataset_for_modeling(num_ballots, user_input=[3, 2])
