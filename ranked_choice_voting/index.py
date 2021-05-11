@@ -1,5 +1,6 @@
 import sys
 import os
+import shutil
 from ranked_choice_voting.generate_ballots import ballots_main
 from ranked_choice_voting.intermediate_master import create_intermediate_master_file
 from ranked_choice_voting.final_master_feature_extraction import feature_extraction_main
@@ -11,7 +12,13 @@ def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
     if not os.path.isdir('data/'):
         os.mkdir('data/')
     else:
-        pass
+        dir = 'data/'
+        for files in os.listdir(dir):
+            path = os.path.join(dir, files)
+            try:
+                shutil.rmtree(path)
+            except OSError:
+                os.remove(path)
 
     ballots_main(num_ballots_to_generate, user_input)
     ballot_level_features_df = create_intermediate_master_file()  # audrey's script
