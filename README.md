@@ -1,31 +1,167 @@
 # Exploring the Likelihood of the Spoiler Effect in Ranked Choice Voting Systems
 
 ## Project Summary
+This project explores the likelihood of the [Spoiler Effect](https://en.wikipedia.org/wiki/Vote_splitting#Spoiler_effect) in [Ranked Choice Voting](https://ballotpedia.org/Ranked-choice_voting_(RCV))
+(RCV) systems. 
 
 ## Motivation
+In [2019](https://www.politico.com/states/new-york/albany/story/2019/11/05/ranked-choice-voting-adopted-in-new-york-city-along-with-other-ballot-measures-1226390), New York City (NYC) voted to adopt a ranked choice system of 
+voting. Being eligible to vote in this election, one of this team's members began researching RCV systems' pros & cons.
+One 'pro' that stood out was the claim that RCV systems did away with something called the "Spoiler Effect."
+
+This project determines if that claim is true.
+
+(Note that this project is being built in the team's free time & is still a work in progress.)  
+
+## What is the Spoiler Effect?
+["In election parlance, a spoiler is a non-winning candidate whose presence on the ballot affects which candidate 
+wins. In mathematical terms, the spoiler effect is when a voting method exhibits failure of a property known as 
+independence of irrelevant alternatives."](https://electionscience.org/library/the-spoiler-effect/)
+
+Check out [this video](https://www.youtube.com/watch?v=JtKAScORevQ) for a more in depth explanation. 
+
+Below is a nice example to read through: 
+
+<p align="center">
+<img src="./img/irv_walkthrough.png" width="420" height="380"/>
+</p>
+
+Even though the Spoiler Effect can happen in almost any electoral system, [proponents of Ranked Choice Voting say](http://archive3.fairvote.org/reforms/instant-runoff-voting/irv-and-the-status-quo/spoiler-effect/) that it is 
+so uncommon a phenomenon that voters shouldn't have to worry about it. On the other hand, though, a good number of 
+people also [say the 
+opposite.](https://psephomancy.medium.com/ranked-choice-voting-doesnt-fix-the-spoiler-effect-80ed58bff72b) So, 
+what's really going on? 
+
+tktk -- diff btwn exhausted ballot & spoiled effect
+
+## What is Ranked Choice Voting?
+Ranked Choice Voting is ["an electoral system in which voters rank candidates by preference on their ballots."](https://ballotpedia.org/Ranked-choice_voting_(RCV)) A typical ballot in an RCV election looks like this: 
+
+<p align="center">
+<img src="./img/rcv_ballot_example.png" width="420" height="380"/>
+</p>
+
+As you can see, instead of voting for a single candidate, voters are asked to grade all possible candidates 
+according to preference.
+
+**Note:** sites like [Election Science](https://electionscience.org/library/the-spoiler-effect/) also call RCV voting 
+"Instant Runoff Voting."
+
+## Credits
+Big thanks goes to all the researchers & authors who helped us understand the intricacies of different voting systems 
+throughout this project. Particular gratitude goes to:
+- [Jon Tingvold](https://github.com/jontingvold), the author of the [`pyrankvote`](https://github.com/jontingvold/pyrankvote) package without which this project would have been 
+extremely difficult
+- [Paul Butler](https://paulbutler.org), a self-proclaimed quant out of NYC whose website 
+https://ranked.vote helped us model our synthetic data for this project
+- [Aaron Hamlin](https://www.linkedin.com/in/aaronhamlin/), the Executive Director of [The Center for Election Science](https://electionscience.org) who 
+put us in touch with Paul & generally helped us navigate the complicated world of voting systems.
 
 ## Methods
-### Obstacles & how we dealt with them:
-- Exhausted ballots: https://democracyjournal.org/arguments/ranked-choice-voting-is-not-the-solution/
-- Noise
-- Probabilities of vote spread across possible candidates
+### Data & Features
+Finding data with which to train our model with was *difficult*. There are hardly any public datasets that include 
+1+ spoiled elections (in an RCV system), let alone tens of thousands. For this reason, we chose one of the most famous 
+spoiled RCV elections as a model for our synthetic data: [Burlington's 2009 mayoral election.](http://bolson.org/~bolson/2009/20090303_burlington_vt_mayor.html) In this election, a candidate named Kurt Wright acted as a Spoiler. 
+Without Wright in the contest, Andy Montroll would have won. After this election, Burlington 
+voted to repeal RCV [in 2010.](https://archive.vpr.org/vpr-news/burlington-voters-repeal-instant-runoff-voting/)
 
-## How to run
+After inspecting the [normalized](https://github.com/ranked-vote/rcv-data-format/blob/master/README.md#normalized-vs-raw) data from this election, we concluded that it took the following features to make an "election":
+- A certain amount of noise across the ballots
+- A specific number of candidates
+- A likely distribution of votes
+- A specific number of ballots
 
-## What to expect
+**Noise**
 
-## Available data for public use
+To model the 'noise' that one would expect to see in real-world elections, we created "partial" ballots. To make 
+these partial ballots, our script chooses a 
+random number between 1-15 that would represent the percentage of total 
+ballots 
+in a specific election that would be missing a vote for a certain candidate. For example, if there were 4 possible 
+candidates for an election, a 'noisy' (i.e. partial) ballot would be one that had votes for 2/4 candidates, instead of 
+4/4.
 
-## Thanks yous
+**Number of Candidates**
 
-## Notes (will go away soon)
+After inspecting the number of candidates in various real-world RCV elections, we found that most elections had 
+between 3-8 candidates. Since the simplest type of election to model the Spoiler Effect would be an election with 3 
+candidates, our script picks a number of candidates for each election between 3-8, with 3 candidates being the 
+most likely to occur.
 
+**Distribution of votes**
+
+Since it's unlikely in reality that each candidate would get an equal share of votes in an election, we decided to 
+randomly generate weights & assign them to each candidate per election ("ballot-weight" below). The higher a 
+candidate's 
+weight, the 
+more 
+votes that candidate received.
+
+**A specific number of ballots**
+
+Taking into account the number of candidates in each election + each candidate's ballot-weight, we generated a 
+certain number of ballots per election. We constrained the number of ballots per election to be between 50 and 50,000. 
+
+**What we chose *not* to model**
+
+We chose *not* to model subjective features that come with any election, such as:
+- Party affiliation of voters & candidates
+- Location & date of election
+- Voter & candidate gender, sex, & socio-economic demographics
+
+We chose not to include these features in our modeled data in order to mitigate bias. Since the Burlington '09 
+election was our only real source of a spoiled RCV election, we did not feel comfortable using it to 
+model 
+these more subjective features. We also did not want to allow for the possibility that our data could lead to spurious 
+correlations, such as *"elections with all-male candidates result in the Spoiler Effect."*
+
+### Strategy 
+A simple way to identify a spoiled election is if the winning candidate is not also the [Condorcet winner.](https://en.wikipedia.org/wiki/Condorcet_method) The Condorcet winner is the candidate who wins the majority vote in 
+all pairwise contests, as visualized below: 
+
+<p align="center">
+<img src="./img/condorcet_matrix.png" width="420" height="380"/>
+</p>
+
+You can see that a `1` indicates the winning candidate, and a `0` indicates the losing candidate. This matrix 
+represents a single ballot. In order to calculate the Condorcet winner across an entire election, you simply add 
+each ballot's Condorcet matrix together & take the candidate who won the most head-to-head/pairwise 
+contests. 
+
+Using these matrices, we calculate the 
+Condorcet winner, then calculate the `pyrankvote` winner, and then compare the two. If the 
+winners were  
+the same, the election was not spoiled; if they differed, the election was spoiled. 
+
+We validated this method on the Burlington '09 dataset.
+
+**Note:** our algorithm does not identify which one of the candidates acted as the Spoiler.
+
+
+## Preliminary observations 
+1. We have noticed that the more candidates are in an election, the more spoiled elections there are. This is in line 
+with intuition: since there are more candidates, there are more head-to-head contests (i.e. a larger pairwise matrix)
+, which results in an increased likelihood that the Condorcet winner is not also the actual (i.e. `pyrankvote`) winner.
+
+The histogram below has been normalized for the number of ballots in each election.
+
+<p align="center">
+<img src="./img/num_cands_histogram_normalized.png" width="540" height="380"/>
+</p>
+
+
+## How to run & use this app
+- Streamlit app tktk
+
+### Output
+tktk
+
+## Resources (tmp)
 ### Burlington '09:
 - https://integralpsychosis.wordpress.com/2009/03/16/burlingtons-2009-mayoral-election-did-irv-fail-the-voters/
 
 ### What is Ranked Choice Voting:
 - https://www.fairvote.org/rcv#11
-
 
 ### Spoiler Effect:
 - http://math.hws.edu/eck/math110_f08/voting.html
@@ -45,7 +181,6 @@
 ### Pro-RCV/explainer articles:
 - https://ctnewsjunkie.com/2015/06/12/op-ed_no_more_spoilers_instant_runoff_voting_makes_third_parties_viable/
 - https://www.fairvote.org/alternatives
-
 
 ### Overall explainer on voting methods:
 - http://www.ams.org/publicoutreach/feature-column/fcarc-voting-decision
