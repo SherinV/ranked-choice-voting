@@ -27,7 +27,7 @@ if cont:
                 st.dataframe(df)
     else:
         st.subheader("Range of candidates:")
-        # TODO: figure out way to prevent same number being the min and max on the slider below
+        # TODO: edge case: when min/max on slider(s) is the same for 1 of 2 hyperparams
         num_cands = st.slider('Select a range representing the number of candidates each election in your dataset'
                               ' can have. Range is inclusive.',
                               3, 8, (3, 8))

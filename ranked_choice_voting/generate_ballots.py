@@ -136,7 +136,7 @@ def ballots_main(num_elections_to_generate, user_input=None):
                 noise = int(user_input[1])
                 generate_ballots_2(cands, noise)
             else:
-                cands_tuple = user_input[0]
+                cands_tuple = user_input[0]  #
                 cand_num_possibilities = np.arange(cands_tuple[0], cands_tuple[-1]+1)
                 ballot_magnitudes = sorted(np.random.dirichlet(cand_num_possibilities, size=1)[0], reverse=True)  # list of length n, where each item decreases in magnitude & items sum to 1
                 cands = np.random.choice(cand_num_possibilities, 1, p=ballot_magnitudes)[0]
