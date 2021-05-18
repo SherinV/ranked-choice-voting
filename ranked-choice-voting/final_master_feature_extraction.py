@@ -74,6 +74,15 @@ def generate_roundwinnervotes(df, num_rounds):
         df = df.loc[:,~df.columns.duplicated()]     
     return df
 
+def get_num_deletes(x):
+    res = 0
+    x=ast.literal_eval(x)
+    for key in x.keys():
+        if x[key] == '0':
+            res = res + 1 
+        else:      
+            res= 0
+    return res
 
 def feature_extraction_main():
     '''
@@ -88,6 +97,13 @@ def feature_extraction_main():
     df = generate_roundwinnervotes(df,num_rounds)
     num_rounds = "-"+"{}".format(num_rounds) #MAIN
     df['total_votes_allrounds'] = df.iloc[:, int(num_rounds):].astype(int).sum(axis=1) #MAIN
+
+
+    col_rounds = [col for col in df if col.startswith("Round: ")]
+    df=df.replace('nan', 0)
+    for i in col_rounds:
+        df["num_dropped_cands_{}".format(i)] = df['{}'.format(i)].apply(lambda row: row if row == 0 else get_num_deletes((row)))
+    
     return df
     
 if __name__ == "__main__":
