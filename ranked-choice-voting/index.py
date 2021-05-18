@@ -32,7 +32,7 @@ def create_dataset_for_modeling(num_ballots_to_generate):
     # Vectorizing dependent var:
     master_df['spoiled'] = np.where(master_df['spoiled'] == 'Y', 0, 1)  # 0 = yes, 1 = no
 
-    master_df.to_csv('final_master.csv', index=False)
+    master_df.to_csv('master.csv', index=False)
 
 
 if __name__ == "__main__":
