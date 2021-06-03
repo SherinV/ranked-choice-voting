@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from templates.s3_stuff import open_s3_connections
+from templates.s3_stuff import open_s3_connections, download_and_load_pickled_model_from_s3
 from ranked_choice_voting.index import create_dataset_for_modeling
 
 st.title("How Likely is the Spoiler Effect in Ranked Choice Voting Systems?")
@@ -27,7 +27,7 @@ if cont:
                 st.dataframe(df)
     else:
         st.subheader("Range of candidates:")
-        # TODO: edge case: when min/max on slider(s) is the same for 1 of 2 hyperparams
+        # TODO: account for edge case: when min/max on slider(s) is the same for 1 of 2 hyperparams
         num_cands = st.slider('Select a range representing the number of candidates each election in your dataset'
                               ' can have. Range is inclusive.',
                               3, 8, (3, 8))
@@ -38,15 +38,33 @@ if cont:
                                   'can have. Range is inclusive. (Integers you choose get turned into percentages with'
                                   ' orders of magnitude proportional to their original values.)',
                                   0, 15, (0, 15))
-            cont = st.checkbox("Check to create your election", key='5')  # TODO: make progress bar
+            cont = st.checkbox("Check to create your election(s)", key='5')
             if cont:
-                df = create_dataset_for_modeling(int(num_elections), user_input=[num_cands, amt_noise])
-                st.dataframe(df)
+                with st.spinner('Calculating... *beep bop boop*...'):
+
+                    df = create_dataset_for_modeling(int(num_elections), user_input=[num_cands, amt_noise])
+                    st.success('ta da!')
+                    st.dataframe(df)
+
+                    # Legend:
+                    st.markdown(body='## Columns')
+                    st.markdown(body='`round[x]winnervotes`: # votes [x] round winner received')
+                    st.markdown(body='`total_votes_allrounds`: Total # of votes across all rounds')
+                    st.markdown(body='`num_candidates`: # candidates in election as a whole')
+                    st.markdown(body='`noise`: amount of partial ballots cast in election')
+                    st.markdown(body='`spoiled`: whether or not the election is predicted to be spoiled '
+                                         '(`0` = not spoiled, `1` = spoiled)')
+
+
+
+
+
 
 
 # TODO: include something re: # of ballots in each election that are auto-generated
 # TODO: include legend for reading election(s) dataframe
-# TODO: include styling for election(s) dataframe
+# TODO: include styling for election(s) dataframe (not necessary, but pretty)
+# TODO: figure out way to avoid truncation of dataframe cells
 
 
 # with st.spinner('Fetching pretrained model from S3...'):
