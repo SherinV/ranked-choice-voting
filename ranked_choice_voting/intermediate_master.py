@@ -2,14 +2,12 @@ import os
 import glob
 from typing import List
 from typing import Dict
-import pandas as pd
-from final_master_feature_extraction import feature_extraction_main
-from generate_condorcet_winner import *
+from ranked_choice_voting.generate_condorcet_winner import *
 import pyrankvote
 from pyrankvote import Candidate, Ballot
 
 
-def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame():
+def create_master_file_from_csvs(glob_pattern='data/*.csv') -> pd.DataFrame():
     """
     Combine election-level csvs in data dir into
     single master dataset using a generator
@@ -31,7 +29,7 @@ def create_master_file_from_csvs(glob_pattern='../data/*.csv') -> pd.DataFrame()
                 idx = df[col].str.isnumeric() & (df[:][col] != '0')
                 df = df[~idx]
             # if any rows contain all '0's, drop that row
-            df = df[(df[filter_col]!='0').any(axis=1)].reset_index(drop=True)
+            df = df[(df[filter_col] != '0').any(axis=1)].reset_index(drop=True)
 
             yield df
 
@@ -217,7 +215,7 @@ def create_intermediate_master_file():
 
 
     final_elect_df = pd.merge(elect_dict, winners_df, left_on='Election', right_on='filename')
-    final_elect_df.to_csv('../data/election_dict.csv', index=False)  # writes a file
+    final_elect_df.to_csv('data/election_dict.csv', index=False)  # writes a file
 
 
     # with pyrankvote winners:

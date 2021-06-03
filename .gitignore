@@ -105,3 +105,9 @@ venv.bak/
 
 # pycharm
 .idea/
+
+# to avoid committing secrets
+*.toml
+
+# to avoid committing binary files
+*.csv
