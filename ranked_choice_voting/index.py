@@ -44,8 +44,8 @@ def create_dataset_for_modeling(num_ballots_to_generate, user_input=None):
     # Vectorizing dependent var:
     master_df['spoiled'] = np.where(master_df['spoiled'] == 'Y', 0, 1)  # 0 = yes, 1 = no
 
-    master_df.to_csv('master.csv', index=False)
-
+    # master_df.to_csv('master.csv', index=False)
+    return master_df
 
 
 if __name__ == "__main__":
