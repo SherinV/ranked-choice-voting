@@ -1,5 +1,7 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
+from sklearn.metrics import confusion_matrix
 from templates.s3_stuff import open_s3_connections, download_and_load_pickled_model_from_s3
 from ranked_choice_voting.index import create_dataset_for_modeling
 
@@ -12,6 +14,7 @@ st.subheader("How many elections do you want to produce?")
 num_elections = st.text_input('Number of elections',  value=1)
 
 cont = st.checkbox("Check to continue", key='1')
+
 if cont:
     if int(num_elections) == 1:
         num_cands = st.select_slider('Select the number of candidates for your election', options=[3, 4, 5, 6, 7, 8], value=3)
@@ -25,6 +28,16 @@ if cont:
             if cont:
                 df = create_dataset_for_modeling(1, user_input=[num_cands, amt_noise])
                 st.dataframe(df)
+
+                # Legend:
+                st.markdown(body='## Columns')
+                st.markdown(body='`round[x]winnervotes`: # votes [x] round winner received')
+                st.markdown(body='`total_votes_allrounds`: Total # of votes across all rounds')
+                st.markdown(body='`num_candidates`: # candidates in election as a whole')
+                st.markdown(body='`noise`: amount of partial ballots cast in election')
+                st.markdown(body='`spoiled`: whether or not the election is predicted to be spoiled '
+                                 '(`0` = not spoiled, `1` = spoiled)')
+
     else:
         st.subheader("Range of candidates:")
         # TODO: account for edge case: when min/max on slider(s) is the same for 1 of 2 hyperparams
@@ -46,7 +59,7 @@ if cont:
                     st.success('ta da!')
                     st.dataframe(df)
 
-                    # Legend:
+                    # Legend: # TODO: update legend w/new cols
                     st.markdown(body='## Columns')
                     st.markdown(body='`round[x]winnervotes`: # votes [x] round winner received')
                     st.markdown(body='`total_votes_allrounds`: Total # of votes across all rounds')
@@ -55,6 +68,29 @@ if cont:
                     st.markdown(body='`spoiled`: whether or not the election is predicted to be spoiled '
                                          '(`0` = not spoiled, `1` = spoiled)')
 
+        cont = st.checkbox('Check to retrieve model')
+        if cont:
+            rf_model = download_and_load_pickled_model_from_s3(s3_connection, 'models/anxela_model.pkl')
+            st.success('Model retrieved')
+
+        cont = st.checkbox('Check to train model with your data')
+        if cont:
+            user_election_data = pd.read_csv('final_master.csv')
+
+            user_election_data.fillna(0, inplace=True)
+
+            # x, y
+            X = df.iloc[:, :-1]
+            Y = df.iloc[:, -1]
+
+
+            # preds
+            predictions = rf_model.predict(X)
+
+            ## VISUALIZING
+            st.title("Results")
+            conf_matrix = confusion_matrix(Y, predictions, normalize='all')
+            st.write(conf_matrix)
 
 
 
@@ -67,27 +103,9 @@ if cont:
 # TODO: figure out way to avoid truncation of dataframe cells
 
 
-# with st.spinner('Fetching pretrained model from S3...'):
-#     # TODO: figure out how to make loading the model from S3 faster
-#     # TODO: how to make this wait until user has input hyperparams
-#     rf_model = download_and_load_pickled_model_from_s3(s3_connection, 'models/audrey_test_rf_model')
-#     st.success('Model retrieved')
 
 
 
-# user_election_data = pd.read_csv('ranked_choice_voting/final_master.csv')
-#
-# # x, y
-# user_election_data_without_outcome = user_election_data.iloc[:, :-1]
-# user_election_data_outcome = user_election_data.iloc[:, -1:].values
-#
-# # preds
-# predictions = rf_model.predict(user_election_data_without_outcome)
-#
-# ## VISUALIZING
-# st.title("Results")
-# conf_matrix = confusion_matrix(user_election_data_outcome, predictions, normalize='all')
-# st.write(conf_matrix)
 
 
 
