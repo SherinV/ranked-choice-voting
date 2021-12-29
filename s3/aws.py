@@ -18,5 +18,3 @@ def concatenate_elections():
 
 
 df = concatenate_elections()
-
-df.to_csv("final_master.csv", index=False)
