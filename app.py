@@ -71,11 +71,11 @@ else:
 
                     # preds
                     predictions = rf_model.predict(X)
-                    st.write(predictions)  # just for debugging
+                    st.write(Y)  # just for debugging
 
                     ## VISUALIZING
                     st.title("Results")
-                    conf_matrix = confusion_matrix(Y, predictions, labels=['spoiled', 'not spoiled'])
+                    conf_matrix = confusion_matrix(Y, predictions, labels=[0, 1])
                     st.write(conf_matrix)
 
 
@@ -86,7 +86,7 @@ else:
 # TODO: make steps into diff side bars?
 # TOOD: figure out how to make check boxes maintain previous state
 # TODO: dockerize shit
-
+# TODO: change labels on confusion matrix to words
 
 
 
