@@ -78,6 +78,12 @@ else:
                     conf_matrix = confusion_matrix(Y, predictions, labels=[0, 1])
                     st.write(conf_matrix)
 
+# need to add something like this so docker will run app specific port:
+# if __name__ == '__app__':
+#     uvicorn.run(app, port=8000, host="0.0.0.0")
+
+# then we can run like this: docker run -p 8000:8000 rcv-streamlit
+
 
 # TODO: include something re: # of ballots in each election that are auto-generated
 # TODO: include legend for reading election(s) dataframe
