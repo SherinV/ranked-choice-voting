@@ -75,7 +75,7 @@ six==1.15.0
 sklearn==0.0
 smmap==4.0.0
 stqdm==0.0.3
-streamlit==0.81.1
+streamlit==1.11.1
 tabulate==0.8.9
 terminado==0.9.4
 testpath==0.4.4
