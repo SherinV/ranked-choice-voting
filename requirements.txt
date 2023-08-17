@@ -59,7 +59,7 @@ protobuf==3.18.3
 ptyprocess==0.7.0
 pycparser==2.20
 pydeck==0.6.2
-Pygments==2.9.0
+Pygments==2.15.0
 pyparsing==2.4.7
 pyrankvote==2.0.2
 pyrsistent==0.17.3
